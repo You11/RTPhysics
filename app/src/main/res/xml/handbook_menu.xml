@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceScreen
+        android:key="button_mechanics_section"
+        android:title="@string/handbook_menu_section_mechanics"
+        android:persistent="false" >
+        <Preference
+            android:key="button_ft_st"
+            android:title="1"
+            android:summary="11" >
+            <intent android:targetPackage="ru.b7.rtphysics"
+                android:targetClass="ru.b7.rtphysics.HandbookTabMainActivity" />
+        </Preference>
+
+        <Preference
+            android:key="button_sd_st"
+            android:title="2"
+            android:summary="22" >
+        </Preference>
+
+        <Preference
+            android:key="button_td_st"
+            android:title="3"
+            android:summary="33" >
+        </Preference>
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:key="button_dynamic_section"
+        android:title="@string/handbook_menu_section_dynamics"
+        android:persistent="false" >
+        <Preference
+            android:key="button_ft_st"
+            android:title="1"
+            android:summary="11" >
+        </Preference>
+
+        <Preference
+            android:key="button_sd_st"
+            android:title="2"
+            android:summary="22" >
+        </Preference>
+
+        <Preference
+            android:key="button_td_st"
+            android:title="3"
+            android:summary="33" >
+        </Preference>
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:key="button_mkt_section"
+        android:title="@string/handbook_menu_section_mkt"
+        android:persistent="false" >
+        <Preference
+            android:key="button_ft_st"
+            android:title="1"
+            android:summary="11" >
+        </Preference>
+
+        <Preference
+            android:key="button_sd_st"
+            android:title="2"
+            android:summary="22" >
+        </Preference>
+
+        <Preference
+            android:key="button_td_st"
+            android:title="3"
+            android:summary="33" >
+        </Preference>
+    </PreferenceScreen>
+
+</PreferenceScreen>

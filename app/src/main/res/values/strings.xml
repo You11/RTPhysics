@@ -1,0 +1,30 @@
+<resources>
+    //имена окон
+    <string name="app_name">RTPhysics</string>
+    <string name="handbook_name">Справочник</string>
+    <string name="calculator_name">Калькулятор</string>
+    <string name="conventer_name">Конвентер</string>
+    <string name="search_name">Поиск</string>
+
+    <string name="action_settings">Settings</string>
+
+    //разделитель бокового меню
+    <string name="navigation_drawer_menu_settings">Параметры</string>
+
+    //разделы бокового меню
+    <string name="navigation_drawer_action_handbook">Справочник</string>
+    <string name="navigation_drawer_action_calculator">Калькулятор</string>
+    <string name="navigation_drawer_action_conventer">Конвентер</string>
+    <string name="navigation_drawer_action_search">Поиск</string>
+    <string name="navigation_drawer_action_exit">Выход</string>
+
+    //разделы справочника
+    <string name="handbook_menu_section_mechanics">Механика</string>
+    <string name="handbook_menu_section_dynamics">Динамика</string>
+    <string name="handbook_menu_section_mkt">МКТ</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+</resources>
