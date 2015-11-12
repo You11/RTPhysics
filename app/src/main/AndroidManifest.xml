@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".HandbookTabMainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".HandbookMenuActivity" >

@@ -1,6 +1,6 @@
 <resources>
     //имена окон
-    <string name="app_name">РТФизика</string>
+    <string name="app_name">RTPhysics</string>
     <string name="handbook_name">Справочник</string>
     <string name="calculator_name">Калькулятор</string>
     <string name="conventer_name">Конвентер</string>

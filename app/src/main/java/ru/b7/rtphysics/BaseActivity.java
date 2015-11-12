@@ -10,11 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 /**
  * Base class for all activities in project
  */
-public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+abstract public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
 
     /**
      *  Navigation drawer constants, invalid is a default value for every activity.
@@ -60,6 +61,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         return toolbar;
     }
+
+    @Override
+    public abstract void onClick(View v);
+
+
 
     //For navigation drawer start
     @Override
