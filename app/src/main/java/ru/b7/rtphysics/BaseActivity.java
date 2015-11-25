@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import ru.b7.rtphysics.Handbook.HandbookMenuActivity;
+
 /**
  * Base class for all activities in project
  */

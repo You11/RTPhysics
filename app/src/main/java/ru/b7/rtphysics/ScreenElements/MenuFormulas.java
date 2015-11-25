@@ -1,10 +1,8 @@
 package ru.b7.rtphysics.ScreenElements;
 
-import android.app.Activity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,56 +15,56 @@ import ru.b7.rtphysics.Database.InstancesInTables.Formula;
 /**
  * Created by Nikita on 11.11.2015.
  */
-public class MenuFormulas extends Style_Global {
+public class MenuFormulas extends StyleGlobal {
 
     TagSetter currentTag;
+    List<Map<String,String>> FormulasInfo;
+    List<Formula> Formulas;
 
-    public MenuFormulas(BaseActivity parentContext,TagSetter tag) {
+
+    public MenuFormulas(BaseActivity parentContext,
+                        TagSetter tag,
+                        List<Formula> formulas) {
+
         super(parentContext, "Formula");//set listener and property for tag
-
-        currentTag=tag;
+        Formulas = formulas;
+        currentTag = tag;
     }
 
-    private List<View> BuildFormulas(List<Formula> items ){
+    public View buildMainLayout() {
 
-        List<View> FormulaLines= new ArrayList<>();
+        List<View> menuItems = BuildFormulas(Formulas);
+        return buildScrollWidgetsOnLay(menuItems, "Formulas");
+    }
 
-        for(Formula item :items){
+    private List<View> BuildFormulas(List<Formula> items){
 
-            Map<String,String> info= Finder.GetByID("Formula", Integer.parseInt(item.GetID()));
-            View formulaLine = formulaElement(item, id_for_R++, info);
+        List<View> FormulaLines = new ArrayList<>();
+
+        for (Formula item : items) {
+
+            Map<String,String> info = Finder.GetByID("Formula", Integer.parseInt(item.GetID()));
+            View formulaLine = formulaElement(item, info);
             FormulaLines.add(formulaLine);
-
         }
 
         return FormulaLines;
     }
 
-    public View formulaElement(Formula item,int id,Map<String,String> info){
+    private View formulaElement(Formula item, Map<String,String> info){
 
+        LinearLayout lay = createLinearLayout(0);
+        lay.setOrientation(LinearLayout.HORIZONTAL);
 
-        LinearLayout lay = CreateLinearLayout(0);
+        ImageView button = new ImageView(parentContext);
+        button = (ImageView) setButtonParams(button, info, onClickListener);
 
-        Button button = new Button(parentContext);
-        TextView text= new TextView(parentContext);
-        //style
+        int idsrc = parentContext.getResources().getIdentifier(item.GetImageName(), "drawable", parentContext.getPackageName());
+        button.setImageResource(idsrc);
 
-        //end
-        button = (Button) this.Button_SetParams(button,id, info, ActivityListener);
-
-        button.setText(item.GetName());
-        text.setText(item.GetInfo());
-
+        button.setLayoutParams(styleHorizontal(createLinearLayout(1)).getLayoutParams());
         lay.addView(button);
-        lay.addView(text);
 
-        return new View(parentContext);
+        return lay;
     }
-
-    public View paragraphElement(String paragraph){
-        return new View(parentContext);
-
-    }
-
-
 }

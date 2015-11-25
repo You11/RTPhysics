@@ -10,7 +10,7 @@
     android:fitsSystemWindows="true"
 
     tools:openDrawer="start"
-    tools:context=".HandbookMenuActivity">
+    tools:context=".Handbook.HandbookMenuActivity">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"

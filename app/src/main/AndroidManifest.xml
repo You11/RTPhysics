@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".HandbookMenuActivity"
+            android:name=".Handbook.HandbookMenuActivity"
             android:label="@string/handbook_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTop">
@@ -21,42 +21,45 @@
         </activity>
 
 
-        <activity android:name=".HandbookTabMainActivity"
+        <activity android:name=".Handbook.HandbookTabMainActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".HandbookMenuActivity" >
+            android:parentActivityName=".Handbook.HandbookMenuActivity"
+            android:label="мяук" >
 
             <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HandbookMenuActivity"/>
+                android:value=".Handbook.HandbookMenuActivity"/>
         </activity>
 
         <activity android:name=".CalculatorMainActivity"
             android:label="@string/calculator_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".HandbookMenuActivity" >
+            android:parentActivityName=".Handbook.HandbookMenuActivity" >
 
             <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HandbookMenuActivity"/>
+                android:value=".Handbook.HandbookMenuActivity"/>
 
         </activity>
 
         <activity android:name=".ConventerMainActivity"
             android:label="@string/conventer_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".HandbookMenuActivity" >
+            android:parentActivityName=".Handbook.HandbookMenuActivity" >
 
             <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HandbookMenuActivity"/>
+                android:value=".Handbook.HandbookMenuActivity"/>
 
         </activity>
+
 
         <activity android:name=".SearchMainActivity"
             android:label="@string/search_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".HandbookMenuActivity" >
+            android:parentActivityName=".Handbook.HandbookMenuActivity" >
 
             <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HandbookMenuActivity"/>
+                android:value=".Handbook.HandbookMenuActivity"/>
 
         </activity>
+
     </application>
 </manifest>

@@ -1,7 +1,6 @@
 package ru.b7.rtphysics.ScreenElements;
 
 import android.content.Context;
-import android.database.Cursor;
 
 /**
  * Created by Nikita on 07.11.2015.
@@ -9,31 +8,31 @@ import android.database.Cursor;
 public class TagSetter {
 
     public final int id;
-    public final String NameOfButton;
+    public final String nameOfButton;
     //in other class
     Context context;
     public  boolean isFavorites;
-    public final String CurrentTable;
+    public final String currentTable;
 
 
     //private constructor for Screen Elements  processing
-    TagSetter(int IdInTable, String Name, boolean isFavorites, String CurrentTable,Context context){
+    TagSetter(int idInTable, String name, boolean isFavorites, String currentTable, Context context) {
 
-        this.context=context;
-        this.id=IdInTable;
-        this.NameOfButton=Name;
-        this.isFavorites=isFavorites;
-        this.CurrentTable =CurrentTable;
+        this.context = context;
+        this.id = idInTable;
+        this.nameOfButton = name;
+        this.isFavorites = isFavorites;
+        this.currentTable = currentTable;
 
     }
 
     //default tag for open start menu
-    public TagSetter(){
+    public TagSetter() {
 
-        id=0;
-        NameOfButton="";
-        isFavorites=false;
-        this.CurrentTable ="";
+        id = 0;
+        nameOfButton = "";
+        isFavorites = false;
+        this.currentTable = "";
 
     }
 }

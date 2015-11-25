@@ -6,7 +6,8 @@
     <string name="conventer_name">Конвентер</string>
     <string name="search_name">Поиск</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_favorite">Избранное</string>
 
     //разделитель бокового меню
     <string name="navigation_drawer_menu_settings">Параметры</string>

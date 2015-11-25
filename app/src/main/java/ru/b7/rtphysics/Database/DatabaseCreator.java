@@ -29,12 +29,12 @@ import ru.b7.rtphysics.R;
  */
 public class DatabaseCreator extends SQLiteOpenHelper {
 
+    Context myContext;
+
     private static String DB_PATH = "/data/data/ru.b7.rtphysics/databases/";
     private static final String DB_NAME = "finalbasa";
     private static final int DATABASE_VERSION = 1;
     public static SQLiteDatabase myDB;
-
-    Context myContext;
 
     /**
      * Конструктор
@@ -59,9 +59,8 @@ public class DatabaseCreator extends SQLiteOpenHelper {
 
         boolean dbExist = checkDataBase();
 
-        if(dbExist){
-            //ничего не делать - база уже есть
-        }else{
+        //если базы нет
+        if (!dbExist) {
             //вызывая этот метод создаем пустую базу, позже она будет перезаписана
 
             this.getReadableDatabase();
@@ -91,7 +90,7 @@ public class DatabaseCreator extends SQLiteOpenHelper {
      * Копирует базу из папки assets заместо созданной локальной БД
      * Выполняется путем копирования потока байтов.
      * */
-    private void copyDataBase() throws IOException{
+    private void copyDataBase() throws IOException {
 
          //Открываем локальную БД как входящий поток
         InputStream myInput = myContext.getAssets().open(DB_NAME);
@@ -105,7 +104,7 @@ public class DatabaseCreator extends SQLiteOpenHelper {
         byte[] buffer = new byte[1024];
         int length;
 
-        while ((length = myInput.read(buffer))>0){
+        while ((length = myInput.read(buffer)) > 0){
 
             myOutput.write(buffer, 0, length);
 
@@ -126,7 +125,7 @@ public class DatabaseCreator extends SQLiteOpenHelper {
 
     @Override
     public synchronized void close() {
-        if(myDB != null)
+        if (myDB != null)
             myDB.close();
         super.close();
 
@@ -136,7 +135,7 @@ public class DatabaseCreator extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
     /* try {
          createDataBase();
-     }catch(IOException exc){
+     } catch(IOException exc){
          System.out.println("Error with copying");
      }*/
     }

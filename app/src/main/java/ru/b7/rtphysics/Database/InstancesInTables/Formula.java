@@ -1,31 +1,36 @@
 package ru.b7.rtphysics.Database.InstancesInTables;
 
-import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Nikita on 16.10.2015.
  */
-public class Formula implements BaseParametrs {
+public class Formula {
 
     final String id;
     final String Name;
-    final boolean IsFavorites;
-    final List<Sign> List_Of_Signs;    //выборка из таблицы знаков
-    final List<Constant> List_Of_Constants;//выборка из талицы констант
+    final String Information;
+    final String ImageName;
 
-    public Formula(
-            Map<String, String> AllParams,
-            List<Sign> AllSigns,
-            List<Constant> AllConstants)
-    {
+
+    public Formula(Map<String,String> AllParams) {
 
         this.id = AllParams.get("_id");
         this.Name = AllParams.get("Name");
-        this.IsFavorites = (Integer.parseInt(AllParams.get("IsFavorites"))==1);
-        this.List_Of_Signs = AllSigns;
-        this.List_Of_Constants = AllConstants;
+        this.Information = AllParams.get("Information");
+        this.ImageName = AllParams.get("ImageName");
 
+    }
+
+    public Formula() {
+        this.id = "Empty";
+        this.Name =  "Empty";
+        this.Information =  "Empty";
+        this.ImageName = "";
+    }
+
+    public String GetImageName(){
+        return this.ImageName;
     }
 
     public String GetID() {
@@ -37,27 +42,7 @@ public class Formula implements BaseParametrs {
     }
 
     public String GetInfo() {
-        StringBuilder result= new StringBuilder();
-        for(Constant n : this.List_Of_Constants){
-            result.append(n.GetSign()+" "+n.GetDimension()+" - "+n.GetName()+"\n");
-        }
-        for(Sign n:this.List_Of_Signs){
-            result.append( n.GetSign()+" "+n.GetDimension()+" - "+n.GetName()+"\n");
-        }
-        return  result.toString();
+        return "";
     }
-
-    public boolean GetFavorites(){
-        return this.IsFavorites;
-    }
-
-    public List<Constant> GetAllConstants() {
-        return this.List_Of_Constants;
-    }
-
-    public List<Sign> GetAllSigns() {
-        return this.List_Of_Signs;
-    }
-
 
 }

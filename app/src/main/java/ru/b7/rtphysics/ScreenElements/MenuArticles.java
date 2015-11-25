@@ -2,6 +2,7 @@ package ru.b7.rtphysics.ScreenElements;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -9,73 +10,90 @@ import java.util.List;
 import java.util.Map;
 
 import ru.b7.rtphysics.BaseActivity;
+import ru.b7.rtphysics.Database.Access_API.FavoritesEditor;
 import ru.b7.rtphysics.Database.Access_API.Finder;
 
 /**
  * Created by Nikita on 08.11.2015.
  */
- public class MenuArticles extends Style_Global {
+
+public class MenuArticles extends StyleGlobal {
 
     private TagSetter currentTag;
+    private boolean isFavoriteSection = false;
 
-    public MenuArticles(BaseActivity activity, TagSetter tag) {
-        super(activity,"Articles");//set listener and property for tag
-        currentTag=tag;
+    public MenuArticles(BaseActivity activity) {
+        super(activity, "Articles");
+        isFavoriteSection = true;
     }
 
-    public View BuildMainLayout(){
+    public MenuArticles(BaseActivity activity, TagSetter tag) {
+        super(activity, "Articles"); //set listener and property for tag
+        currentTag = tag;
+    }
+
+    public View buildMainLayout(){
 
         //передаем id от предыдущей кнопки
-        List<View> menuItems= BuildWithFavorites(Finder.ClickFinder.LoadList_Articles(currentTag.id));
-        return BuildWidgetsOnLay(menuItems);
 
+        List<View> menuItems;
+
+        if (isFavoriteSection) {
+            List<Map<String,String>> list = FavoritesEditor.GetAll();
+            if (list == null) {
+                return null;
+            }
+
+            menuItems = buildWithFavorites(list);
+        } else {
+            menuItems = buildWithFavorites(Finder.ClickFinder.LoadList_Articles(currentTag.id));
+        }
+
+        return buildScrollWidgetsOnLay(menuItems, "Articles");
     }
 
     //Button plus Button_Favorites
-    private List<View> BuildWithFavorites(List<Map<String, String>> tableLines){
+    private List<View> buildWithFavorites(List<Map<String, String>> tableLines){
 
-        List<View> articlesButtons= new ArrayList<>();
+        List<View> articlesButtons = new ArrayList<>();
 
         //Convert to FormulaButton
-        for(Map<String,String> item : tableLines){
-
-            View buttonsGroup = ButtonArticles(id_for_R++,id_for_R++,item);
+        for (Map<String,String> item : tableLines) {
+            View buttonsGroup = ButtonArticles(item);
             articlesButtons.add(buttonsGroup);
-
         }
+
         return articlesButtons;
     }
 
-    private LinearLayout ButtonArticles(int ID_M,int ID_F,Map<String,String> item){
+    private LinearLayout ButtonArticles(Map<String,String> item){
 
-        LinearLayout lay = Style_Horizontal(CreateLinearLayout(0));
+        LinearLayout lay = styleHorizontal(createLinearLayout(0));
 
         Button buttonMain = new Button(parentContext);
-        View buttonFavorite = new Button(parentContext);
+        View buttonFavorite = new ImageButton(parentContext);
         //style
 
 
         //initialization
-        buttonMain = (Button)mainArticlesButton(buttonMain,ID_M, item);
-        buttonFavorite = Button_SetParams(buttonFavorite, ID_F, item, ActivityListener);
+        buttonMain = (Button) mainArticlesButton(buttonMain,item);
+        buttonFavorite = setButtonParams(buttonFavorite, item, onClickListener);
 
         //params
-        buttonMain.setLayoutParams(Style_Horizontal(CreateLinearLayout(1)).getLayoutParams());
-        buttonFavorite =  Style_Favorites((Button)buttonFavorite);
+        buttonMain.setLayoutParams(styleHorizontal(createLinearLayout(1)).getLayoutParams());
+        buttonFavorite =  styleFavorites((ImageButton) buttonFavorite);
 
         lay.addView(buttonFavorite);
         lay.addView(buttonMain);
-        //lay.removeView(lay);
-        return lay;
 
+        return lay;
     }
 
-    private View mainArticlesButton(Button button,int id,Map<String,String> item){
+    private View mainArticlesButton(Button button, Map<String,String> item) {
 
-        button= (Button)Button_SetParams(button, id, item, ActivityListener);
+        button = (Button) setButtonParams(button, item, onClickListener);
         button.setText(item.get("Name"));
 
         return button;
-
     }
 }
