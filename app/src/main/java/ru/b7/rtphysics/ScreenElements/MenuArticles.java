@@ -93,6 +93,7 @@ public class MenuArticles extends StyleGlobal {
 
         button = (Button) setButtonParams(button, item, onClickListener);
         button.setText(item.get("Name"));
+        button.setTextSize(20);
 
         return button;
     }

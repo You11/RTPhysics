@@ -1,9 +1,11 @@
 package ru.b7.rtphysics.ScreenElements;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -15,6 +17,7 @@ import java.util.Map;
 
 import  ru.b7.rtphysics.Database.Access_API.Finder;
 import ru.b7.rtphysics.BaseActivity;
+import ru.b7.rtphysics.R;
 
 /**
  * Created by Nikita on 12.11.2015.
@@ -49,7 +52,7 @@ public class MenuParagraph extends StyleGlobal {
 
     private List<View> LayoutCreate(String content) {
 
-        TextView paragraphPage = new TextView(super.parentContext);
+        TextView paragraphPage = new TextView(new ContextThemeWrapper(parentContext, R.style.ArticleTextStyle));
         paragraphPage.setPadding(0, 20, 0, 0);
         paragraphPage.setText(Html.fromHtml(content, new MyImageGetter(parentContext), null));
 

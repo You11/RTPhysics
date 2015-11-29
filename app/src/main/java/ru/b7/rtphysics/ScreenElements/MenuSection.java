@@ -52,6 +52,7 @@ public class MenuSection extends StyleGlobal {
                 LinearLayout.LayoutParams.MATCH_PARENT
         ));
         favoriteButton.setId(R.id.favoriteSection);
+        favoriteButton.setTextSize(20);
 
         linearLayout.addView(favoriteButton);
 
@@ -63,12 +64,11 @@ public class MenuSection extends StyleGlobal {
     private View menuSectionButton(Map<String,String> item){
 
         Button button = new Button(parentContext);
-        //style
 
-        //end
         button = (Button) setButtonParams(button, item, onClickListener);
 
         button.setText(item.get("Name"));
+        button.setTextSize(20);
 
         return button;
     }

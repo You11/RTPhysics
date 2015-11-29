@@ -44,11 +44,11 @@ abstract class StyleGlobal {
         ScrollView scroll = new ScrollView(parentContext);
         scroll.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+                ViewGroup.LayoutParams.MATCH_PARENT));
 
         if (type.equals("Formulas")) {
             for (View item : viewList) {
-                item.setPadding(0, 20, 0, 0);
+                item.setPadding(0, 20, 0, 20);
                 mainLay.addView(item);
             }
         } else {
@@ -64,12 +64,12 @@ abstract class StyleGlobal {
         return lay;
     }
 
-    protected LinearLayout buildWidgetsOnLay(List<View> viewList){
+    protected LinearLayout buildWidgetsOnLay(List<View> viewList) {
 
         LinearLayout mainLay = mainLinearLayout();
         mainLay.setOrientation(LinearLayout.VERTICAL);
 
-        for(View item : viewList){
+        for (View item : viewList){
             //searching column in table by his name
             mainLay.addView(item, mainLay.getLayoutParams());
         }

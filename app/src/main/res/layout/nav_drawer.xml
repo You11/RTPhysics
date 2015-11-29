@@ -8,5 +8,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:fitsSystemWindows="true"
+    android:background="#616161"
+    app:itemIconTint="@color/nav_drawer_menu_text"
     app:headerLayout="@layout/nav_drawer_header"
     app:menu="@menu/activity_main_drawer" />

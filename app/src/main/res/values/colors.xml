@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#1b1b1b</color>
+    <color name="colorPrimaryDark">#616161</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="tabsScrollColor">#004D40</color>
+    <color name="textColorPrimary">#000000</color>
+    <color name="windowBackground">#424242</color>
+    <color name="tabsScrollColor">#ffc107</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="articleTextColor">#ababab</color>
+    <color name="actionBarTextColor">#ffc107</color>
+    <color name="navDrawerMenuActiveTextColor">#ffc107</color>
+    <color name="navDrawerMenuInactiveTextColor">#fafafa</color>
 </resources>

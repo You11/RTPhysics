@@ -28,4 +28,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="corporation_name">7bytes</string>
+    <string name="icon_description">Icon of application</string>
 </resources>

@@ -1,6 +1,7 @@
 package ru.b7.rtphysics.Handbook;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +25,6 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
 
     int numberOfTabs = 2;
     static TagSetter tagSetter;
-    static int LowId;
 
 
     @Override
@@ -57,7 +57,7 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
+                return ContextCompat.getColor(getApplicationContext(), R.color.tabsScrollColor);
             }
         });
 
