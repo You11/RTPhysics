@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="50">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_symb_last"
+            android:id="@+id/calc_button_symb_last"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_func_last"
+            android:id="@+id/calc_button_func_last"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_symb"
+            android:id="@+id/calc_button_symb"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_func"
+            android:id="@+id/calc_button_func"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_del"
+            android:id="@+id/calc_button_del"
+            style="@style/CalculatorPadButtonStyle"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit1"
+            android:id="@+id/calc_button_digit1"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit2"
+            android:id="@+id/calc_button_digit2"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit3"
+            android:id="@+id/calc_button_digit3"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_exp"
+            android:id="@+id/calc_button_exp"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_clr"
+            android:id="@+id/calc_button_clr"
+            style="@style/CalculatorPadButtonStyle"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit4"
+            android:id="@+id/calc_button_digit4"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit5"
+            android:id="@+id/calc_button_digit5"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit6"
+            android:id="@+id/calc_button_digit6"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_add"
+            android:id="@+id/calc_button_add"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_sub"
+            android:id="@+id/calc_button_sub"
+            style="@style/CalculatorPadButtonStyle"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit7"
+            android:id="@+id/calc_button_digit7"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit8"
+            android:id="@+id/calc_button_digit8"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit9"
+            android:id="@+id/calc_button_digit9"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_mult"
+            android:id="@+id/calc_button_mult"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_div"
+            android:id="@+id/calc_button_div"
+            style="@style/CalculatorPadButtonStyle"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_dot"
+            android:id="@+id/calc_button_dot"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_digit0"
+            android:id="@+id/calc_button_digit0"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_left_paren"
+            android:id="@+id/calc_button_left_paren"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_right_paren"
+            android:id="@+id/calc_button_right_paren"
+            style="@style/CalculatorPadButtonStyle"/>
+
+        <ru.b7.rtphysics.Calculator.CalculatorPadButton
+            android:text="@string/calc_button_enter"
+            android:id="@+id/calc_button_enter"
+            style="@style/CalculatorPadButtonStyle"/>
+
+    </LinearLayout>
+
+</LinearLayout>

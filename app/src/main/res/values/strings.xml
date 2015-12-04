@@ -30,4 +30,35 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="corporation_name">7bytes</string>
     <string name="icon_description">Icon of application</string>
+
+    //calc
+    <string name="calc_button_digit1">1</string>
+    <string name="calc_button_digit2">2</string>
+    <string name="calc_button_digit3">3</string>
+    <string name="calc_button_digit4">4</string>
+    <string name="calc_button_digit5">5</string>
+    <string name="calc_button_digit6">6</string>
+    <string name="calc_button_digit7">7</string>
+    <string name="calc_button_digit8">8</string>
+    <string name="calc_button_digit9">9</string>
+    <string name="calc_button_digit0">0</string>
+
+    <string name="calc_button_add">+</string>
+    <string name="calc_button_sub">-</string>
+    <string name="calc_button_mult">*</string>
+    <string name="calc_button_div">/</string>
+    <string name="calc_button_exp">^</string>
+
+    <string name="calc_button_dot">.</string>
+    <string name="calc_button_left_paren">(</string>
+    <string name="calc_button_right_paren">)</string>
+    <string name="calc_button_func">func</string>
+    <string name="calc_button_symb">symb</string>
+
+    <string name="calc_button_func_last"></string>
+    <string name="calc_button_symb_last"></string>
+    <string name="calc_button_del">del</string>
+    <string name="calc_button_clr">clr</string>
+    <string name="calc_button_enter">=</string>
+
 </resources>

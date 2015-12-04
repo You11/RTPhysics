@@ -30,7 +30,7 @@
                 android:value=".Handbook.HandbookMenuActivity"/>
         </activity>
 
-        <activity android:name=".CalculatorMainActivity"
+        <activity android:name=".Calculator.CalculatorMainActivity"
             android:label="@string/calculator_name"
             android:theme="@style/RTPhysicsTheme.NoActionBar"
             android:parentActivityName=".Handbook.HandbookMenuActivity" >
