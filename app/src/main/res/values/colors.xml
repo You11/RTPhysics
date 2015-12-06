@@ -11,4 +11,5 @@
     <color name="actionBarTextColor">#ffc107</color>
     <color name="navDrawerMenuActiveTextColor">#ffc107</color>
     <color name="navDrawerMenuInactiveTextColor">#fafafa</color>
+    <color name="SearchedTextColor">#ffc107</color>
 </resources>

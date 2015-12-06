@@ -1,11 +1,8 @@
 package ru.b7.rtphysics;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,7 +17,7 @@ import ru.b7.rtphysics.Handbook.HandbookMenuActivity;
 /**
  * Base class for all activities in project
  */
-abstract public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
+abstract public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
 
     /**
      *  Navigation drawer constants, invalid is a default value for every activity.
@@ -36,20 +33,21 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
 
     protected final int NAV_DRAWER_ITEM_SEARCH = 3;
 
+    public boolean isSearchRun= false;
+
     //navigation drawer menu except exit, order is necessary
     private final int[] NAV_DRAWER_LIST = new int[]{
         R.id.nav_handbook,
         R.id.nav_calculator,
         R.id.nav_conventer,
         R.id.nav_search
+
     };
 
     //handbook is our starting activity
     private int item = NAV_DRAWER_LIST[0];
 
     private Toolbar toolbar;
-
-    private MenuItem activeMenuItem;
 
     /**
      * Slightly less to write in main activities. Layout and toolbar setup in one method,
@@ -71,8 +69,6 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
 
     @Override
     public abstract void onClick(View v);
-
-
 
     //For navigation drawer start
     @Override
@@ -111,17 +107,11 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_drawer);
         navigationView.setNavigationItemSelectedListener(this);
-
-        navigationView.setItemTextColor(ContextCompat.getColorStateList(this, R.color.nav_drawer_menu_text));
-        navigationView.setItemTextAppearance(R.style.NavDrawerMenuTextStyle);
-
-        navigationView.getMenu().getItem(item).setChecked(true);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -130,18 +120,10 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        switch (id) {
-            case R.id.action_settings:
-                return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
     private void setMenuId(int item) {
         this.item = item;
@@ -152,7 +134,6 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
     }
 
     //Navigation in drawer
-    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -205,4 +186,7 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
 }

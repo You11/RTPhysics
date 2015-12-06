@@ -11,7 +11,6 @@ import java.util.List;
 import ru.b7.rtphysics.BaseActivity;
 import ru.b7.rtphysics.Database.InstancesInTables.Formula;
 import ru.b7.rtphysics.ScreenElements.MenuFormulas;
-import ru.b7.rtphysics.ScreenElements.TagSetter;
 
 /**
  * Second tab, formulas fragment.
@@ -21,11 +20,10 @@ public class HandbookTabFormulasFragment extends android.support.v4.app.Fragment
     static MenuFormulas Decor;
 
     public static HandbookTabFormulasFragment Initialize(
-            BaseActivity Activity, TagSetter tag,
+            BaseActivity Activity,
             List<Formula> formulas)
     {
-        Decor = new MenuFormulas(Activity, tag, formulas);
-
+        Decor = new MenuFormulas(Activity,  formulas);
         return new HandbookTabFormulasFragment();
     }
 

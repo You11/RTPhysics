@@ -1,7 +1,7 @@
 package ru.b7.rtphysics.ScreenElements;
 
+import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -18,13 +18,20 @@ import ru.b7.rtphysics.R;
  */
 public class MenuSection extends StyleGlobal {
 
+    List<String> names = new ArrayList<>();
 
     public MenuSection(BaseActivity activity) {
         super(activity, "Section");//set listener and property for tag
     }
 
-    public View buildMainLayout(){
+    public MenuSection(BaseActivity activity,List<String> names) {
+        super(activity, "Section");//set listener and property for tag
+        this.names = names;
+    }
 
+
+
+    public View buildMainLayout(){
         return buildScrollWidgetsOnLay(BuildMenuButtons(Finder.Get_All("Section")), "Section");
     }
 
@@ -35,7 +42,6 @@ public class MenuSection extends StyleGlobal {
 
         for (Map<String,String> item : tableLines){
             LinearLayout linearLayout = createLinearLayout(0);
-
             View menuButton = menuSectionButton(item);
             linearLayout.addView(menuButton);
 
@@ -47,28 +53,33 @@ public class MenuSection extends StyleGlobal {
         Button favoriteButton = new Button(parentContext);
         favoriteButton.setOnClickListener(onClickListener);
         favoriteButton.setText("Избранное");
+
         favoriteButton.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT
         ));
+
         favoriteButton.setId(R.id.favoriteSection);
-        favoriteButton.setTextSize(20);
-
         linearLayout.addView(favoriteButton);
-
         MenuButtons.add(linearLayout);
 
         return MenuButtons;
     }
 
+
     private View menuSectionButton(Map<String,String> item){
 
         Button button = new Button(parentContext);
+        //style
 
+        //end
         button = (Button) setButtonParams(button, item, onClickListener);
-
         button.setText(item.get("Name"));
-        button.setTextSize(20);
+
+        if(names.contains(button.getText()))
+           button.setTextColor(ContextCompat.getColor(parentContext, R.color.SearchedTextColor));
+
+
 
         return button;
     }

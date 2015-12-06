@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import ru.b7.rtphysics.BaseActivity;
 import ru.b7.rtphysics.Database.Access_API.Finder;
@@ -18,41 +17,28 @@ import ru.b7.rtphysics.ScreenElements.TagSetter;
  */
 public class HandbookViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    CharSequence titles[];
-    int numberOfTabs;
-    BaseActivity Activity;
-    TagSetter tag;
-    List<Formula> FormulasOnPage= new ArrayList<>();
-    List<Map<String,String>> FormulasInfo=new ArrayList<>();
+    private CharSequence titles[];
+    private int numberOfTabs;
+    private BaseActivity Activity;
+    private TagSetter tag;
+    private List<Formula> FormulasOnPage= new ArrayList<>();
+    private String content;
 
-    public HandbookViewPagerAdapter(FragmentManager fm, CharSequence titles[], int numberOfTabs,
-                                    BaseActivity Activity, TagSetter tag) {
+    public HandbookViewPagerAdapter(FragmentManager fm, CharSequence titles[], int numberOfTabs, BaseActivity Activity, TagSetter tag,String content){
         super(fm);
-
         this.titles = titles;
         this.numberOfTabs = numberOfTabs;
         this.Activity = Activity;
         this.tag = tag;
+        this.content=content;
+
         InitializingFormulas();
 
     }
 
+
     private void InitializingFormulas(){
             FormulasOnPage = Finder.ClickFinder.LoadList_Formula(tag.id);
-            FormulasInfo = GetInfoAboutFormulas(FormulasOnPage);
-    }
-
-    private List<Map<String,String>> GetInfoAboutFormulas(List<Formula> formulas){
-        List<Map<String,String>> formulaInfo= new ArrayList<>();
-        for(Formula item :formulas){
-
-            Map<String,String> info= Finder.GetByID("Formula", Integer.parseInt(item.GetID()));
-
-            formulaInfo.add(info);
-
-        }
-
-        return formulaInfo;
     }
 
 
@@ -60,11 +46,11 @@ public class HandbookViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         if (position == 0) {
-            return (HandbookTabArticleFragment.Initialize(Activity, tag, FormulasInfo));
-
+            return  content==null
+                    ? (HandbookTabArticleFragment.Initialize(Activity, tag))
+                    : (HandbookTabArticleFragment.Initialize(Activity,content));
         } else {
-            return (HandbookTabFormulasFragment.Initialize(Activity, tag, FormulasOnPage));
-
+            return (HandbookTabFormulasFragment.Initialize(Activity, FormulasOnPage));
         }
     }
 
