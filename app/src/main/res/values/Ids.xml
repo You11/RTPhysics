@@ -4,4 +4,6 @@
         type="id" />
     <item name="currentArticle"
         type="id" />
+    <item name="spinnerForCalc"
+        type="id" />
 </resources>

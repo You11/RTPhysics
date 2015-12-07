@@ -26,8 +26,10 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_search">SearchActivity</string>
+
     <string name="corporation_name">7bytes</string>
     <string name="icon_description">Icon of application</string>
 
@@ -61,4 +63,14 @@
     <string name="calc_button_clr">clr</string>
     <string name="calc_button_enter">=</string>
 
+    <string-array name="functions_array">
+        <item>sin(</item>
+        <item>cos(</item>
+        <item>tg(</item>
+    </string-array>
+
+    <string-array name="symbols_array">
+        <item>\u03c0</item> //pi
+        <item>e</item>
+    </string-array>
 </resources>

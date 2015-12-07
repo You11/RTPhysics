@@ -51,14 +51,14 @@
     </style>
 
     <style name="CalculatorPadButtonStyle">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
 
         <item name="android:layout_weight">1</item>
         <item name="android:focusable">true</item>
         <item name="android:textColor">@color/calculatorButtonTextColor</item>
-        <item name="android:background">@color/calculatorButtonBackgroundColor</item>
+        <item name="android:background">@drawable/button_boarder</item>
         <item name="android:layout_marginLeft">0dp</item>
     </style>
 

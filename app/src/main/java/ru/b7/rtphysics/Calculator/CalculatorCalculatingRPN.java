@@ -3,7 +3,7 @@ package ru.b7.rtphysics.Calculator;
 import java.util.Stack;
 
 /**
- * Calculating some shit, input goes to reverse polish notation and back to answer
+ * Calculating some shit, input goes to reverse polish notation and then calculates back to answer
  */
 public class CalculatorCalculatingRPN {
 
@@ -27,6 +27,9 @@ public class CalculatorCalculatingRPN {
                 while (stack.peek().toString().charAt(0) != '(')
                     RPNAnswer += stack.pop();
                 stack.pop();
+            } else if (currentChar[i] == '-' && (i == 0 || !Character.isDigit(currentChar[i - 1]))){
+                RPNAnswer += "0 ";
+                stack.push(currentChar[i]);
             } else if (stack.isEmpty() || checkPriority(currentChar[i], stack)) {
                 RPNAnswer += " ";
                 stack.push(currentChar[i]);
@@ -50,7 +53,9 @@ public class CalculatorCalculatingRPN {
         char[] currentChar = RPNInput.toCharArray();
 
         for (int i = 0; i < RPNInput.length(); i++) {
-            if (Character.isDigit(currentChar[i]) || currentChar[i] == ' ') {
+            if (Character.isDigit(currentChar[i])
+                    || currentChar[i] == ' '
+                    || currentChar[i] == '.') {
                 stack.push(currentChar[i]);
             } else {
                 numbers = createNumbers(stack);

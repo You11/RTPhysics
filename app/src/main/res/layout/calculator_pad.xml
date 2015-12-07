@@ -40,7 +40,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10">
+        android:layout_weight="10"
+        android:id="@+id/calculator_layout_pad_first_row">
 
         <ru.b7.rtphysics.Calculator.CalculatorPadButton
             android:text="@string/calc_button_digit1"

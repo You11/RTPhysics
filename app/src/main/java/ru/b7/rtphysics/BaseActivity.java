@@ -48,8 +48,6 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
 
     private Toolbar toolbar;
 
-    private MenuItem activeMenuItem;
-
     /**
      * Slightly less to write in main activities. Layout and toolbar setup in one method,
      * since current toolbar for now is made for all activities.
@@ -71,7 +69,11 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
     @Override
     public abstract void onClick(View v);
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupNavDrawer();
+    }
 
     //For navigation drawer start
     @Override
