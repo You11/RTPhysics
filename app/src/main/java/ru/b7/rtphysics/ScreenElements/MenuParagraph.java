@@ -3,6 +3,7 @@ package ru.b7.rtphysics.ScreenElements;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -50,7 +51,7 @@ public class MenuParagraph extends StyleGlobal {
 
     private List<View> LayoutCreate(String content) {
 
-        TextView paragraphPage = new TextView(super.parentContext);
+        JellyBeanSpanFixTextView paragraphPage = new JellyBeanSpanFixTextView(super.parentContext);
 
         paragraphPage.setPadding(0, 20, 0, 0);
         paragraphPage.setText(Html.fromHtml(content, new MyImageGetter(parentContext), null));
@@ -73,14 +74,53 @@ public class MenuParagraph extends StyleGlobal {
         @Override
         public Drawable getDrawable(String source) {
 
-            Drawable drawFromPath;
-            int path = c.getResources().getIdentifier(source, "drawable", c.getPackageName());
-            drawFromPath = c.getResources().getDrawable(path);
-            drawFromPath.setBounds(0, 0, drawFromPath.getIntrinsicWidth(),
-                    drawFromPath.getIntrinsicHeight());
+               Drawable drawFromPath;
+               int path = c.getResources().getIdentifier(source, "drawable", c.getPackageName());
+               System.out.println(path);
+               drawFromPath = c.getResources().getDrawable(path);
+               drawFromPath.setBounds(0, 0, drawFromPath.getIntrinsicWidth(),
+                       drawFromPath.getIntrinsicHeight());
 
-            return drawFromPath;
+               return drawFromPath;
+
         }
     }
 
+    public class PatchedTextView extends TextView {
+        public PatchedTextView(Context context, AttributeSet attrs, int defStyle) {
+            super(context, attrs, defStyle);
+        }
+        public PatchedTextView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
+        public PatchedTextView(Context context) {
+            super(context);
+        }
+        @Override
+        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            try{
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+            }catch (ArrayIndexOutOfBoundsException e){
+                setText(getText().toString());
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+            }
+        }
+        @Override
+        public void setGravity(int gravity){
+            try{
+                super.setGravity(gravity);
+            }catch (ArrayIndexOutOfBoundsException e){
+                setText(getText().toString());
+                super.setGravity(gravity);
+            }
+        }
+        @Override
+        public void setText(CharSequence text, BufferType type) {
+            try{
+                super.setText(text, type);
+            }catch (ArrayIndexOutOfBoundsException e){
+                setText(text.toString());
+            }
+        }
+    }
 }
