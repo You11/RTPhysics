@@ -38,6 +38,15 @@
                 android:value=".Handbook.HandbookMenuActivity" />
         </activity>
         <activity
+            android:name=".Calculator.CalculatorPreferences"
+            android:label="Настройки"
+            android:parentActivityName=".Calculator.CalculatorMainActivity"
+            android:theme="@style/RTPhysicsTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Calculator.CalculatorMainActivity" />
+        </activity>
+        <activity
             android:name=".ConventerMainActivity"
             android:label="@string/conventer_name"
             android:parentActivityName=".Handbook.HandbookMenuActivity"

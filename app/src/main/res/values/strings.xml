@@ -34,6 +34,9 @@
     <string name="corporation_name">7bytes</string>
     <string name="icon_description">Icon of application</string>
 
+    <string name="calculator_preferences_title_formatting">Форматирование</string>
+    <string name="calculator_preferences_number_of_digits">Количество символов в выводе</string>
+
     //calc
     <string name="calc_button_digit1">1</string>
     <string name="calc_button_digit2">2</string>
@@ -103,5 +106,4 @@
         <item>x=n*(a+b)</item>
         <item>x=q*sin(t)^2</item>
     </string-array>
-
 </resources>
