@@ -30,20 +30,20 @@ public class CalculatorMainActivity extends BaseActivity {
                 case R.id.calc_button_del:
                     editText.deleteLastSymbol();
                     break;
-//                case R.id.calc_button_func:
-//                    Spinner spinner = spinnerForButton(R.array.functions_array, v);
-//                    spinner.performClick();
-//                    break;
-//                case R.id.calc_button_func_last:
-//                    break;
-//                case R.id.calc_button_symb:
-//                    spinner = spinnerForButton(R.array.symbols_array, v);
-//                    spinner.performClick();
-//                    break;
-//                case R.id.calc_button_symb_last:
-//                    break;
+                case R.id.calc_button_func:
+                    Spinner spinner = spinnerForButton(R.array.functions_array, v);
+                    spinner.performClick();
+                    break;
+                case R.id.calc_button_func_last:
+                    break;
+                case R.id.calc_button_symb:
+                    spinner = spinnerForButton(R.array.symbols_array, v);
+                    spinner.performClick();
+                    break;
+                case R.id.calc_button_symb_last:
+                    break;
                 case R.id.calc_button_enter:
-                    CalculatorCalculatingRPN calculator = new CalculatorCalculatingRPN();
+                    CalculatorCalculatingRPN calculator = new CalculatorCalculatingRPN(CalculatorMainActivity.this);
                     String result = calculator.calculate(calculator.doTransitionInRPN(editText.getText().toString()));
                     editText.setText(result);
                     break;
@@ -90,7 +90,7 @@ public class CalculatorMainActivity extends BaseActivity {
         v.getLocationOnScreen(location);
 
         spinner.setPadding(location[0] + v.getWidth() * 3 / 4, 0, 0, 0);
-        spinner.setDropDownVerticalOffset(location[1] + v.getHeight());
+        spinner.setDropDownVerticalOffset(location[1]);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,

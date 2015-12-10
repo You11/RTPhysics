@@ -5,6 +5,7 @@
     <string name="calculator_name">Калькулятор</string>
     <string name="conventer_name">Конвентер</string>
     <string name="search_name">Поиск</string>
+    <string name="title_activity_fcalculator_main">FCalculatorMainActivity</string>
 
     <string name="action_settings">Настройки</string>
     <string name="action_favorite">Избранное</string>
@@ -63,14 +64,44 @@
     <string name="calc_button_clr">clr</string>
     <string name="calc_button_enter">=</string>
 
-    <string-array name="functions_array">
+    <string name="calculator_incorrect_input">Некорректный ввод</string>
+
+    <string-array name="functions_array"> //don't change the order of trigonometry!
+        <item>return</item>
         <item>sin(</item>
         <item>cos(</item>
         <item>tg(</item>
+        <item>ctg(</item>
+        <item>log(</item>
+        <item>ln(</item>
+    </string-array>
+
+    <string-array name="functions_array_reverse">
+        <item></item>
+        <item>arcsin(</item>
+        <item>arccos(</item>
+        <item>arctg(</item>
+        <item>arcctg(</item>
+        <item></item>
     </string-array>
 
     <string-array name="symbols_array">
+        <item>return</item>
         <item>\u03c0</item> //pi
         <item>e</item>
     </string-array>
+
+    <string-array name="symbols_array_values">
+        <item></item>
+        <item>3.1415926535</item>
+        <item>2.7182818284</item>
+    </string-array>
+
+    <string-array name="Перемещение">
+        <item>x=a+b</item>
+        <item>x=c+a^n</item>
+        <item>x=n*(a+b)</item>
+        <item>x=q*sin(t)^2</item>
+    </string-array>
+
 </resources>

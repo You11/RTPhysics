@@ -81,7 +81,7 @@ public class MenuArticles extends StyleGlobal {
 
         //params
         buttonMain.setLayoutParams(styleHorizontal(createLinearLayout(1)).getLayoutParams());
-        buttonFavorite =  styleFavorites((ImageButton) buttonFavorite);
+        buttonFavorite = styleFavorites((ImageButton) buttonFavorite);
 
         lay.addView(buttonFavorite);
         lay.addView(buttonMain);

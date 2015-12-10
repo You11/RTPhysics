@@ -5,7 +5,7 @@ import android.support.v4.app.NavUtils;
 import android.view.View;
 
 /**
- * Created by user on 01.11.2015.
+ * conventer activity
  */
 public class ConventerMainActivity extends BaseActivity {
 

@@ -14,4 +14,7 @@
     <color name="calculatorButtonBackgroundColor">#1b1b1b</color>
     <color name="calculatorButtonTextColor">#ffc107</color>
     <color name="calculatorButtonBorderColor">#292929</color>
+    <color name="fcalculatorDefaultTextColor">#fafafa</color>
+    <color name="fcalculatorVariablesTextColor">#ffc107</color>
+    <color name="fcalculatorAnswerTextColor">#ffc107</color>
 </resources>

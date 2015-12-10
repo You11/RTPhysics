@@ -1,15 +1,16 @@
 package ru.b7.rtphysics.Handbook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
 
 import ru.b7.rtphysics.BaseActivity;
-import ru.b7.rtphysics.Database.Access_API.FavoritesEditor;
+import ru.b7.rtphysics.Calculator.FCalculator.FCalculatorMainActivity;
 import ru.b7.rtphysics.R;
 import ru.b7.rtphysics.ScreenElements.FavoritesClickListener;
 import ru.b7.rtphysics.ScreenElements.TagSetter;
@@ -29,7 +30,15 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
+        int id = v.getId();
 
+        if (Character.isDigit(String.valueOf(id).toCharArray()[0])) {
+            Intent intent = new Intent(this, FCalculatorMainActivity.class);
+            intent.putExtra("numberOfFormula", id);
+            Button button = (Button) HandbookMenuActivity.getLastView();
+            intent.putExtra("nameOfArticle", button.getText().toString());
+            startActivity(intent);
+        }
     }
 
     public static void HandbookTabCreate(TagSetter tag)

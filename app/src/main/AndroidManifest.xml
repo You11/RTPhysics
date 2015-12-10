@@ -1,65 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.b7.rtphysics" >
+    package="ru.b7.rtphysics">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/RTPhysicsTheme" >
+        android:theme="@style/RTPhysicsTheme">
         <activity
             android:name=".Handbook.HandbookMenuActivity"
             android:label="@string/handbook_name"
-            android:theme="@style/RTPhysicsTheme.NoActionBar"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:theme="@style/RTPhysicsTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".Handbook.HandbookTabMainActivity"
-            android:theme="@style/RTPhysicsTheme.NoActionBar"
+        <activity
+            android:name=".Handbook.HandbookTabMainActivity"
+            android:label="Что тут написать?"
             android:parentActivityName=".Handbook.HandbookMenuActivity"
-            android:label="Что тут написать?" >
-
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Handbook.HandbookMenuActivity"/>
+            android:theme="@style/RTPhysicsTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Handbook.HandbookMenuActivity" />
         </activity>
-
-        <activity android:name=".Calculator.CalculatorMainActivity"
+        <activity
+            android:name=".Calculator.CalculatorMainActivity"
             android:label="@string/calculator_name"
-            android:theme="@style/RTPhysicsTheme.NoActionBar"
-            android:parentActivityName=".Handbook.HandbookMenuActivity" >
-
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Handbook.HandbookMenuActivity"/>
-
+            android:parentActivityName=".Handbook.HandbookMenuActivity"
+            android:theme="@style/RTPhysicsTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Handbook.HandbookMenuActivity" />
         </activity>
-
-        <activity android:name=".ConventerMainActivity"
+        <activity
+            android:name=".ConventerMainActivity"
             android:label="@string/conventer_name"
-            android:theme="@style/RTPhysicsTheme.NoActionBar"
-            android:parentActivityName=".Handbook.HandbookMenuActivity" >
-
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Handbook.HandbookMenuActivity"/>
-
+            android:parentActivityName=".Handbook.HandbookMenuActivity"
+            android:theme="@style/RTPhysicsTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Handbook.HandbookMenuActivity" />
         </activity>
-
-
-        <activity android:name=".SearchMainActivity"
+        <activity
+            android:name=".SearchMainActivity"
             android:label="@string/search_name"
-            android:theme="@style/RTPhysicsTheme.NoActionBar"
-            android:parentActivityName=".Handbook.HandbookMenuActivity" >
-
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Handbook.HandbookMenuActivity"/>
-
+            android:parentActivityName=".Handbook.HandbookMenuActivity"
+            android:theme="@style/RTPhysicsTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Handbook.HandbookMenuActivity" />
         </activity>
-
+        <activity
+            android:name=".Calculator.FCalculator.FCalculatorMainActivity"
+            android:label="@string/title_activity_fcalculator_main"
+            android:parentActivityName=".Handbook.HandbookTabMainActivity"
+            android:theme="@style/RTPhysicsTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.b7.rtphysics.Handbook.HandbookTabMainActivity" />
+        </activity>
     </application>
+
 </manifest>

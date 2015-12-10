@@ -18,7 +18,7 @@
         <item name="android:titleTextStyle">@style/AppTheme.AppBarOverlay.TitleTextStyle</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay.TitleTextStyle" >
+    <style name="AppTheme.AppBarOverlay.TitleTextStyle">
         <item name="android:textColorPrimary">@color/actionBarTextColor</item>
     </style>
 
@@ -44,7 +44,7 @@
         <item name="android:typeface">sans</item>
     </style>
 
-    <style name="NavDrawerMenuTextStyle" parent="TextAppearance.AppCompat" >
+    <style name="NavDrawerMenuTextStyle" parent="TextAppearance.AppCompat">
         <item name="android:textAppearance">?android:textAppearanceLarge</item>
         <item name="android:textColor">@color/navDrawerMenuActiveTextColor</item>
         <item name="android:textSize">16sp</item>
@@ -61,5 +61,9 @@
         <item name="android:background">@drawable/button_boarder</item>
         <item name="android:layout_marginLeft">0dp</item>
     </style>
+
+    <style name="RTPhysicsTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="RTPhysicsTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

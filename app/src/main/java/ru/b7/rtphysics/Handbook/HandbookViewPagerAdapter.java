@@ -22,8 +22,8 @@ public class HandbookViewPagerAdapter extends FragmentStatePagerAdapter {
     int numberOfTabs;
     BaseActivity Activity;
     TagSetter tag;
-    List<Formula> FormulasOnPage= new ArrayList<>();
-    List<Map<String,String>> FormulasInfo=new ArrayList<>();
+    List<Formula> FormulasOnPage = new ArrayList<>();
+    List<Map<String,String>> FormulasInfo = new ArrayList<>();
 
     public HandbookViewPagerAdapter(FragmentManager fm, CharSequence titles[], int numberOfTabs,
                                     BaseActivity Activity, TagSetter tag) {
@@ -43,10 +43,10 @@ public class HandbookViewPagerAdapter extends FragmentStatePagerAdapter {
     }
 
     private List<Map<String,String>> GetInfoAboutFormulas(List<Formula> formulas){
-        List<Map<String,String>> formulaInfo= new ArrayList<>();
-        for(Formula item :formulas){
+        List<Map<String,String>> formulaInfo = new ArrayList<>();
+        for(Formula item : formulas){
 
-            Map<String,String> info= Finder.GetByID("Formula", Integer.parseInt(item.GetID()));
+            Map<String,String> info = Finder.GetByID("Formula", Integer.parseInt(item.GetID()));
 
             formulaInfo.add(info);
 

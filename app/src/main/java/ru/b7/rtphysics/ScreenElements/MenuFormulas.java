@@ -1,7 +1,6 @@
 package ru.b7.rtphysics.ScreenElements;
 
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -21,6 +20,7 @@ public class MenuFormulas extends StyleGlobal {
     TagSetter currentTag;
     List<Map<String, String>> FormulasInfo;
     List<Formula> Formulas;
+    int id = 0;
 
 
     public MenuFormulas(BaseActivity parentContext,
@@ -63,6 +63,12 @@ public class MenuFormulas extends StyleGlobal {
         int idsrc = parentContext.getResources().getIdentifier(item.GetImageName(), "drawable", parentContext.getPackageName());
         imageView.setImageResource(idsrc);
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
+        imageView.setId(id);
+        id++;
+
+        imageView.setOnClickListener(onClickListener);
+
         lay.addView(imageView);
 
         return lay;
