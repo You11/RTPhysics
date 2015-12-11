@@ -16,7 +16,7 @@ public class TagSetter {
 
 
     //private constructor for Screen Elements  processing
-    TagSetter(int idInTable, String name, boolean isFavorites, String currentTable, Context context) {
+    public TagSetter(int idInTable, String name, boolean isFavorites, String currentTable, Context context) {
 
         this.context = context;
         this.id = idInTable;
@@ -28,11 +28,10 @@ public class TagSetter {
 
     //default tag for open start menu
     public TagSetter() {
-
         id = 0;
-        nameOfButton = "";
+        nameOfButton = null;
         isFavorites = false;
-        this.currentTable = "";
+        this.currentTable = "StartTable";
 
     }
 }

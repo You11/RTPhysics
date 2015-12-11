@@ -11,6 +11,7 @@
     <color name="actionBarTextColor">#ffc107</color>
     <color name="navDrawerMenuActiveTextColor">#ffc107</color>
     <color name="navDrawerMenuInactiveTextColor">#fafafa</color>
+    <color name="SearchedTextColor">#ffc107</color>
     <color name="calculatorButtonBackgroundColor">#1b1b1b</color>
     <color name="calculatorButtonTextColor">#ffc107</color>
     <color name="calculatorButtonBorderColor">#292929</color>

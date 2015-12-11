@@ -1,7 +1,6 @@
 package ru.b7.rtphysics.ScreenElements;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import ru.b7.rtphysics.BaseActivity;
 abstract class StyleGlobal {
 
     protected final Context parentContext;
+    protected final BaseActivity currentActivity;
     private String currentTable;
     static int idForR = 0;
     private FavoritesClickListener favoritesClickListener = new FavoritesClickListener();
@@ -30,6 +30,7 @@ abstract class StyleGlobal {
 
     protected StyleGlobal(BaseActivity parentContext, String currentTable) {
         this.currentTable = currentTable;
+        currentActivity=parentContext;
         this.parentContext = parentContext;
         onClickListener = parentContext;
     }
@@ -44,11 +45,11 @@ abstract class StyleGlobal {
         ScrollView scroll = new ScrollView(parentContext);
         scroll.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
+                ViewGroup.LayoutParams.WRAP_CONTENT));
 
         if (type.equals("Formulas")) {
             for (View item : viewList) {
-                item.setPadding(0, 20, 0, 20);
+                item.setPadding(0, 20, 0, 0);
                 mainLay.addView(item);
             }
         } else {
@@ -64,12 +65,12 @@ abstract class StyleGlobal {
         return lay;
     }
 
-    protected LinearLayout buildWidgetsOnLay(List<View> viewList) {
+    protected LinearLayout buildWidgetsOnLay(List<View> viewList){
 
         LinearLayout mainLay = mainLinearLayout();
         mainLay.setOrientation(LinearLayout.VERTICAL);
 
-        for (View item : viewList){
+        for(View item : viewList){
             //searching column in table by his name
             mainLay.addView(item, mainLay.getLayoutParams());
         }
@@ -123,9 +124,11 @@ abstract class StyleGlobal {
         button.setId(idForR++);
         button.setTag(SetTag(item));
         button.setOnClickListener(activityListener);
+
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
+
         button.setLayoutParams(layoutParams);
 
         return button;

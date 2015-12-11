@@ -1,9 +1,7 @@
 package ru.b7.rtphysics.Database.Access_API;
 
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,9 +31,7 @@ public class Finder {
 
         //выходные данные : List строк, в каждой строке несколько таблиц в виде Map(/*имя таблицы*/,/*Значение*/)
         List<Map<String,String>> send = new ArrayList<Map<String,String>>();
-
         Cursor c = DatabaseCreator.myDB.query(Table_name, columns, selection, SelectionArgs, groupBy, having, orderBy);
-
         c.moveToFirst();
 
         int length = c.getColumnNames().length;
@@ -77,11 +73,12 @@ public class Finder {
         return Get_All(Table_name, null, "Name = ?", new String[]{Name}, null, null, null).get(0);
     }
 
+
+
     public static class ClickFinder {
 
         public static List<Map<String, String>> LoadList_Articles(int idOfClickedButton) {
-            return Get_All(
-                   "Articles",
+            return Get_All("Articles",
                    null,
                    "Section_id = ?",
                    new String[]{String.valueOf(idOfClickedButton)},
@@ -105,6 +102,9 @@ public class Finder {
             return menuList;
 
         }
+
+
+
     }
 }
 

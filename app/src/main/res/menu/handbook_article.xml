@@ -8,6 +8,13 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:title=""
+        android:id="@+id/action_search"
+        android:icon="@drawable/search"
+        app:showAsAction="ifRoom|collapseActionView"
+        />
+
+    <item
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
         app:showAsAction="always" />

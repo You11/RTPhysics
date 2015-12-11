@@ -25,10 +25,12 @@ public class SearchMainActivity extends BaseActivity {
         return NAV_DRAWER_ITEM_SEARCH;
     }
 
+
     @Override
     public void onBackPressed() {
         NavUtils.navigateUpFromSameTask(this);
 
 
     }
+
 }

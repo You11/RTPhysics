@@ -35,6 +35,8 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
 
     protected final int NAV_DRAWER_ITEM_SEARCH = 3;
 
+    public boolean isSearchRun = false;
+
     //navigation drawer menu except exit, order is necessary
     private final int[] NAV_DRAWER_LIST = new int[]{
         R.id.nav_handbook,
@@ -141,8 +143,6 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
     private void setMenuId(int item) {
         this.item = item;
