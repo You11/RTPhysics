@@ -106,4 +106,21 @@
         <item>x=n*(a+b)</item>
         <item>x=q*sin(t)^2</item>
     </string-array>
+
+    <string-array name="Адиабатический_процесс">
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+        <item>x=a+b</item>
+    </string-array>
 </resources>

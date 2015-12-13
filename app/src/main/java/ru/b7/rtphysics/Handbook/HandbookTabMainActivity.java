@@ -59,7 +59,9 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
             Intent intent = new Intent(this, FCalculatorMainActivity.class);
             intent.putExtra("numberOfFormula", id);
             Button button = (Button) HandbookMenuActivity.getLastView();
-            intent.putExtra("nameOfArticle", button.getText().toString());
+            String articleName = button.getText().toString();
+            articleName = articleName.replace(' ', '_');
+            intent.putExtra("nameOfArticle", articleName);
             startActivity(intent);
         }
     }

@@ -74,9 +74,10 @@ public class FCalculatorLayoutView {
                 R.color.fcalculatorVariablesTextColor));
 
         EditText variableInput = new EditText(context);
+        variableInput.setSelectAllOnFocus(true);
         variableInput.setTextSize(20);
-        variableInput.setInputType(InputType.TYPE_CLASS_NUMBER);
         variableInput.setId(id++);
+        variableInput.setInputType(InputType.TYPE_CLASS_TEXT);
         variableInput.setTextColor(ContextCompat.getColor(context, R.color.fcalculatorDefaultTextColor));
 
         linearLayout.addView(nameOfVariable);

@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".Handbook.HandbookTabMainActivity"
-            android:label="Что тут написать?"
+            android:label="Статья"
             android:parentActivityName=".Handbook.HandbookMenuActivity"
             android:theme="@style/RTPhysicsTheme.NoActionBar">
             <meta-data
@@ -59,7 +59,8 @@
             android:name=".Calculator.FCalculator.FCalculatorMainActivity"
             android:label="@string/title_activity_fcalculator_main"
             android:parentActivityName=".Handbook.HandbookTabMainActivity"
-            android:theme="@style/RTPhysicsTheme">
+            android:theme="@style/RTPhysicsTheme"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.b7.rtphysics.Handbook.HandbookTabMainActivity" />
