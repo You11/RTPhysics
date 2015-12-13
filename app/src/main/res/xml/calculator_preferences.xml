@@ -3,8 +3,7 @@
     <PreferenceCategory
         android:title="@string/calculator_preferences_title_formatting">
         <EditTextPreference
-            android:title="@string/calculator_preferences_number_of_digits"
-            android:key="NUMBER_OF_DIGITS_IN_ANSWER"
-            android:defaultValue="@integer/calc_default_number_of_digits_in_answer" />
+            android:key="NUMBER_OF_DIGITS_IN_CALC"
+            android:title="@string/calculator_preferences_number_of_digits" />
     </PreferenceCategory>
 </PreferenceScreen>

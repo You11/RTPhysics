@@ -89,7 +89,13 @@ public class FCalculatorLayoutView {
         LinearLayout linearLayout = (LinearLayout) createLinearLayout();
 
         TextView formula = new TextView(context);
-        formula.setText(input);
+        char[] chars = input.toCharArray();
+        String answerInput = "";
+        for (char aChar : chars) {
+            answerInput += aChar;
+            answerInput += " ";
+        }
+        formula.setText(answerInput);
         formula.setTextSize(30);
 
         linearLayout.addView(formula);

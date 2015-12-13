@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/rtphysics_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/RTPhysicsTheme">
@@ -45,15 +45,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Calculator.CalculatorMainActivity" />
-        </activity>
-        <activity
-            android:name=".ConventerMainActivity"
-            android:label="@string/conventer_name"
-            android:parentActivityName=".Handbook.HandbookMenuActivity"
-            android:theme="@style/RTPhysicsTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Handbook.HandbookMenuActivity" />
         </activity>
         <activity
             android:name=".SearchMainActivity"

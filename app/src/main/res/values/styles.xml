@@ -51,7 +51,7 @@
     </style>
 
     <style name="CalculatorPadButtonStyle">
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
 

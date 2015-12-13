@@ -31,20 +31,14 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
 
     protected final int NAV_DRAWER_ITEM_CALCULATOR = 1;
 
-    protected final int NAV_DRAWER_ITEM_CONVENTER = 2;
-
     protected final int NAV_DRAWER_ITEM_SEARCH = 3;
-
-    public boolean isSearchRun = false;
-
     //navigation drawer menu except exit, order is necessary
     private final int[] NAV_DRAWER_LIST = new int[]{
         R.id.nav_handbook,
         R.id.nav_calculator,
-        R.id.nav_conventer,
         R.id.nav_search
     };
-
+    public boolean isSearchRun = false;
     //handbook is our starting activity
     private int item = NAV_DRAWER_LIST[0];
 
@@ -144,12 +138,12 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
         return super.onOptionsItemSelected(item);
     }
 
-    private void setMenuId(int item) {
-        this.item = item;
-    }
-
     private int getMenuId() {
         return item;
+    }
+
+    private void setMenuId(int item) {
+        this.item = item;
     }
 
     //Navigation in drawer
@@ -182,12 +176,6 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
 
             case R.id.nav_calculator: {
                 intent = new Intent(this, CalculatorMainActivity.class);
-                startActivity(intent);
-                break;
-            }
-
-            case R.id.nav_conventer: {
-                intent = new Intent(this, ConventerMainActivity.class);
                 startActivity(intent);
                 break;
             }

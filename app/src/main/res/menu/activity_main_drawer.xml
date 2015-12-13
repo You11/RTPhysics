@@ -2,21 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     android:checkable="true">
 
-    <group android:checkableBehavior="all"
-        android:id="@+id/drawer_menu_group1" >
+    <group
+        android:id="@+id/drawer_menu_group1"
+        android:checkableBehavior="all">
         <item android:id="@+id/nav_handbook"
             android:icon="@android:drawable/ic_menu_camera"
             android:title="@string/navigation_drawer_action_handbook" />
         <item android:id="@+id/nav_calculator"
             android:icon="@android:drawable/ic_menu_gallery"
             android:title="@string/navigation_drawer_action_calculator" />
-        <item android:id="@+id/nav_conventer"
-            android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="@string/navigation_drawer_action_conventer" />
     </group>
 
-    <group android:checkableBehavior="all"
-        android:id="@+id/drawer_menu_group2">
+    <group
+        android:id="@+id/drawer_menu_group2"
+        android:checkableBehavior="all">
         <item android:id="@+id/nav_search"
             android:icon="@android:drawable/ic_menu_manage"
             android:title="@string/navigation_drawer_action_search" />

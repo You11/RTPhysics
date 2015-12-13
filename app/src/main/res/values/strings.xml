@@ -5,7 +5,7 @@
     <string name="calculator_name">Калькулятор</string>
     <string name="conventer_name">Конвентер</string>
     <string name="search_name">Поиск</string>
-    <string name="title_activity_fcalculator_main">FCalculatorMainActivity</string>
+    <string name="title_activity_fcalculator_main">Калькулятор формулы</string>
 
     <string name="action_settings">Настройки</string>
     <string name="action_favorite">Избранное</string>
@@ -58,8 +58,8 @@
     <string name="calc_button_dot">.</string>
     <string name="calc_button_left_paren">(</string>
     <string name="calc_button_right_paren">)</string>
-    <string name="calc_button_func">func</string>
-    <string name="calc_button_symb">symb</string>
+    <string name="calc_button_func">fn</string>
+    <string name="calc_button_symb">cn</string>
 
     <string name="calc_button_func_last"></string>
     <string name="calc_button_symb_last"></string>
@@ -100,7 +100,7 @@
         <item>2.7182818284</item>
     </string-array>
 
-    <string-array name="Перемещение">
+    <string-array name="Вязкость">
         <item>x=a+b</item>
         <item>x=c+a^n</item>
         <item>x=n*(a+b)</item>

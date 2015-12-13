@@ -12,179 +12,12 @@ import ru.b7.rtphysics.R;
  */
 public class CalculatorCalculatingRPN {
 
+    private final String ERROR_MESSAGE;
     private Context context;
-    private String errorMessage;
 
     public CalculatorCalculatingRPN(Context context) {
         this.context = context;
-        errorMessage = context.getResources().getString(R.string.calculator_incorrect_input);
-    }
-
-    public String doTransitionInRPN(String input) {
-        String RPNAnswer = "";
-        char[] currentChar = input.toCharArray();
-        int lastCharWasConstant = 0;
-        Stack stack = new Stack();
-
-        for (int i = 0; i < input.length(); i++) {
-            if (Character.isDigit(currentChar[i]) || currentChar[i] == '.') {
-            //цифра или точка
-                RPNAnswer += currentChar[i];
-
-            } else if (Character.isLetter(currentChar[i])) {
-            //константы и функции
-                int constNumber;
-                if (i != currentChar.length - 1 && Character.isLetter(currentChar[i + 1])) {
-                    constNumber = isConstant((currentChar[i]), currentChar[i + 1]);
-                    if (constNumber != -1) {
-                        RPNAnswer += getConstant(constNumber);
-                        lastCharWasConstant = 2;
-                    } else {
-                        String function = getFunction(currentChar, i);
-                        stack.push('(');
-                        stack.push(function);
-
-                        for (int j = 0; j < function.length(); j++)
-                            i++;
-                    }
-                } else {
-                    constNumber = isConstant(currentChar[i]);
-                    if (constNumber != -1) {
-                        RPNAnswer += getConstant(constNumber);
-                        lastCharWasConstant = 2;
-                    }
-                }
-
-            } else if (currentChar[i] == '(') {
-            //открывающаяся скобка, всегда идет в стэк
-                stack.push(currentChar[i]);
-
-            } else if (currentChar[i] == ')') {
-            //закрывающаяся скобка, пока не встретит откр.скобку, выпиливает все из стэка
-                while (stack.peek().toString().charAt(0) != '(')
-                    RPNAnswer += stack.pop();
-                stack.pop();
-
-            } else if (currentChar[i] == '-' && (i == 0
-                    || !Character.isDigit(currentChar[i - 1])
-                    && lastCharWasConstant != -1)){
-                //отрицательное число
-                RPNAnswer += "0 ";
-                stack.push(currentChar[i]);
-
-            } else if (stack.isEmpty() || checkPriority(currentChar[i], stack)) { //для всего остального
-                RPNAnswer += " ";
-                stack.push(currentChar[i]);
-
-            } else {
-                RPNAnswer += stack.pop();
-                stack.push(currentChar[i]);
-            }
-
-            if (lastCharWasConstant > 0) lastCharWasConstant--;
-        }
-
-        while (!stack.isEmpty()) {
-            RPNAnswer += stack.pop();
-        }
-
-        Log.d("meow", RPNAnswer);
-
-        return RPNAnswer;
-    }
-
-    public String calculate(String RPNInput) {
-        Stack stack = new Stack();
-        double[] numbers;
-        double result = 0;
-        char[] currentChar = RPNInput.toCharArray();
-
-        for (int i = 0; i < RPNInput.length(); i++) {
-            if (Character.isDigit(currentChar[i])
-                    || currentChar[i] == ' '
-                    || currentChar[i] == '.') {
-                stack.push(currentChar[i]);
-            } else {
-                if (!Character.isLetter(currentChar[i])) {
-                    numbers = getTwoNumbers(stack);
-                    switch (currentChar[i]) {
-                        case '+':
-                            result = numbers[0] + numbers[1];
-                            break;
-                        case '-':
-                            result = numbers[0] - numbers[1];
-                            break;
-                        case '*':
-                            result = numbers[0] * numbers[1];
-                            break;
-                        case '/':
-                            if (numbers[1] == 0) return errorMessage;
-                            result = numbers[0] / numbers[1];
-                            break;
-                        case '^':
-                            if (numbers[1] < 1 && numbers[0] < 0) return errorMessage;
-                            result = Math.pow(numbers[0], numbers[1]);
-                            break;
-                    }
-
-                } else if (isFunction(currentChar, i)) {
-                    String function = getFunction(currentChar, i);
-
-                    double number = Double.parseDouble(getString(stack));
-
-                    for (int j = 0; j < function.length() - 1; j++)
-                        i++;
-
-                    switch (function) {
-                        case "sin":
-                            result = Math.sin(number);
-                            break;
-
-                        case "cos":
-                            result = Math.cos(number);
-                            break;
-
-                        case "tg":
-                            result = Math.tan(number);
-                            break;
-
-                        case "ctg":
-                            result = 1 / Math.tan(number);
-                            break;
-
-                        case "log":
-                            if (number <= 0) return errorMessage;
-                            result = Math.log10(number);
-                            break;
-
-                        case "ln":
-                            if (number <= 0) return errorMessage;
-                            result = Math.log(number);
-                    }
-                }
-
-                String s = String.valueOf(result);
-                char[] chars = s.toCharArray();
-                boolean isInteger = isInteger(chars);
-
-                if (isInteger) {
-                    for (int j = 0; chars[j] != '.'; j++) {
-                        stack.push(chars[j]);
-                    }
-                } else {
-                    for (int j = 0; j < s.length(); j++) {
-                        stack.push(chars[j]);
-                    }
-                }
-
-                if (i != RPNInput.length() - 1 && Character.isDigit(currentChar[i + 1])) {
-                    stack.push(' ');
-                }
-            }
-        }
-
-
-        return getString(stack);
+        ERROR_MESSAGE = context.getResources().getString(R.string.calculator_incorrect_input);
     }
 
     private static boolean checkPriority(char currentChar, Stack stack) {
@@ -219,6 +52,210 @@ public class CalculatorCalculatingRPN {
         }
 
         return a > b;
+    }
+
+    public String doTransitionInRPN(String input) {
+        String RPNAnswer = "";
+        char[] currentChar = input.toCharArray();
+        int lastCharWasConstant = 0;
+        int lastCharInInput = currentChar.length;
+        Stack stack = new Stack();
+
+        do {
+            lastCharInInput--;
+            if (lastCharInInput != 0 && isSign(currentChar[lastCharInInput]) != '0')
+                return ERROR_MESSAGE;
+        } while (currentChar[lastCharInInput] == ')');
+
+        if (isSign(currentChar[0]) != '0') RPNAnswer += "0";
+
+        for (int i = 0; i < input.length(); i++) {
+            if (Character.isDigit(currentChar[i]) || currentChar[i] == '.') {
+            //цифра или точка
+                RPNAnswer += currentChar[i];
+
+            } else if (Character.isLetter(currentChar[i])) {
+            //константы и функции
+                int constNumber;
+                if (i != currentChar.length - 1 && Character.isLetter(currentChar[i + 1])) {
+                    constNumber = isConstant((currentChar[i]), currentChar[i + 1]);
+                    if (constNumber != -1) {
+                        if (i != 0 && Character.isDigit(currentChar[i - 1])) {
+                            stack.push('*');
+                            RPNAnswer += " ";
+                        }
+                        RPNAnswer += getConstant(constNumber);
+                        lastCharWasConstant = 2;
+                        // если пользователь ввел перед константой число, кидаем в стэк умножение
+                    } else {
+                        String function = getFunction(currentChar, i);
+                        stack.push('(');
+                        stack.push(function);
+
+                        for (int j = 0; j < function.length(); j++)
+                            i++;
+                    }
+                } else {
+                    constNumber = isConstant(currentChar[i]);
+                    if (constNumber != -1) {
+                        // если пользователь ввел перед константой число, кидаем в стэк умножение
+                        if (i != 0 && Character.isDigit(currentChar[i - 1])) {
+                            stack.push('*');
+                            RPNAnswer += " ";
+                        }
+                        RPNAnswer += getConstant(constNumber);
+                        lastCharWasConstant = 2;
+                    }
+                }
+
+            } else if (currentChar[i] == '(') {
+            //открывающаяся скобка, всегда идет в стэк
+                stack.push(currentChar[i]);
+
+            } else if (currentChar[i] == ')') {
+            //закрывающаяся скобка, пока не встретит откр.скобку, выпиливает все из стэка
+                while (stack.peek().toString().charAt(0) != '(')
+                    RPNAnswer += stack.pop();
+                stack.pop();
+
+            } else if (currentChar[i] == '-' && (i == 0
+                    || !Character.isDigit(currentChar[i - 1])
+                    && lastCharWasConstant != -1)){
+                //отрицательное число
+                RPNAnswer += "0 ";
+                stack.push(currentChar[i]);
+
+            } else {
+                char sign = isSign(currentChar[i]);
+                if (sign != '0') {
+                    if (i != 0 && isSign(currentChar[i - 1]) != '0') {
+                        return ERROR_MESSAGE;
+                    }
+
+                    if (i != 0 && currentChar[i - 1] == '(') {
+                        RPNAnswer += "0";
+                    }
+
+                    if (stack.isEmpty() || checkPriority(currentChar[i], stack)) {
+                        RPNAnswer += " ";
+                        stack.push(currentChar[i]);
+
+                    } else {
+                        RPNAnswer += stack.pop();
+                        stack.push(currentChar[i]);
+                    }
+                }
+            }
+
+            if (lastCharWasConstant > 0) lastCharWasConstant--;
+        }
+
+        while (!stack.isEmpty()) {
+            RPNAnswer += stack.pop();
+        }
+
+        Log.d("meow", RPNAnswer);
+
+        return RPNAnswer;
+    }
+
+    public String calculate(String RPNInput) {
+        Stack stack = new Stack();
+        double[] numbers;
+        double result = 0;
+        char[] currentChar = RPNInput.toCharArray();
+
+        if (RPNInput.equals(ERROR_MESSAGE)) return ERROR_MESSAGE;
+
+        try {
+            for (int i = 0; i < RPNInput.length(); i++) {
+                if (Character.isDigit(currentChar[i])
+                        || currentChar[i] == ' '
+                        || currentChar[i] == '.') {
+                    stack.push(currentChar[i]);
+                } else {
+                    if (!Character.isLetter(currentChar[i])) {
+                        numbers = getTwoNumbers(stack);
+                        switch (currentChar[i]) {
+                            case '+':
+                                result = numbers[0] + numbers[1];
+                                break;
+                            case '-':
+                                result = numbers[0] - numbers[1];
+                                break;
+                            case '*':
+                                result = numbers[0] * numbers[1];
+                                break;
+                            case '/':
+                                if (numbers[1] == 0) return ERROR_MESSAGE;
+                                result = numbers[0] / numbers[1];
+                                break;
+                            case '^':
+                                if (numbers[1] < 1 && numbers[0] < 0) return ERROR_MESSAGE;
+                                result = Math.pow(numbers[0], numbers[1]);
+                                break;
+                        }
+
+                    } else if (isFunction(currentChar, i)) {
+                        String function = getFunction(currentChar, i);
+
+                        double number = Double.parseDouble(getString(stack));
+
+                        for (int j = 0; j < function.length() - 1; j++)
+                            i++;
+
+                        switch (function) {
+                            case "sin":
+                                result = Math.sin(number);
+                                break;
+
+                            case "cos":
+                                result = Math.cos(number);
+                                break;
+
+                            case "tg":
+                                result = Math.tan(number);
+                                break;
+
+                            case "ctg":
+                                result = 1 / Math.tan(number);
+                                break;
+
+                            case "log":
+                                if (number <= 0) return ERROR_MESSAGE;
+                                result = Math.log10(number);
+                                break;
+
+                            case "ln":
+                                if (number <= 0) return ERROR_MESSAGE;
+                                result = Math.log(number);
+                        }
+                    }
+
+                    String s = String.valueOf(result);
+                    char[] chars = s.toCharArray();
+                    boolean isInteger = isInteger(chars);
+
+                    if (isInteger) {
+                        for (int j = 0; chars[j] != '.'; j++) {
+                            stack.push(chars[j]);
+                        }
+                    } else {
+                        for (int j = 0; j < s.length(); j++) {
+                            stack.push(chars[j]);
+                        }
+                    }
+
+                    if (i != RPNInput.length() - 1 && Character.isDigit(currentChar[i + 1])) {
+                        stack.push(' ');
+                    }
+                }
+            }
+        } catch (NumberFormatException e) {
+            return ERROR_MESSAGE;
+        }
+
+        return getString(stack);
     }
 
     private double[] getTwoNumbers(Stack stack) {
@@ -326,5 +363,14 @@ public class CalculatorCalculatingRPN {
         String[] array = context.getResources().getStringArray(R.array.symbols_array_values);
 
         return array[position];
+    }
+
+    private char isSign(char currentChar) {
+        if (currentChar == '+' ||
+                currentChar == '-' ||
+                currentChar == '*' ||
+                currentChar == '/' ||
+                currentChar == '^') return currentChar;
+        else return '0';
     }
 }

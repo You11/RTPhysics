@@ -1,10 +1,12 @@
 package ru.b7.rtphysics.Calculator;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +23,8 @@ import ru.b7.rtphysics.R;
  * Calculator Activity. Navigation drawer enabled, back button goes to HandbookMenuActivity.
  */
 public class CalculatorMainActivity extends BaseActivity {
+
+    SharedPreferences sPref;
 
     public View.OnClickListener mListener = new View.OnClickListener() {
 
@@ -64,6 +68,8 @@ public class CalculatorMainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator_main);
 
+        sPref = PreferenceManager.getDefaultSharedPreferences(this);
+
         CalculatorEditText editText = (CalculatorEditText) findViewById(R.id.editText);
         editText.setBackgroundResource(android.R.color.transparent);
     }
@@ -81,6 +87,13 @@ public class CalculatorMainActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.calculator_menu, menu);
+
+        return true;
     }
 
     @Override
@@ -106,7 +119,6 @@ public class CalculatorMainActivity extends BaseActivity {
         v.getLocationOnScreen(location);
 
         spinner.setPadding(location[0] + v.getWidth() * 3 / 4, 0, 0, 0);
-        spinner.setDropDownVerticalOffset(location[1]);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
@@ -139,10 +151,9 @@ public class CalculatorMainActivity extends BaseActivity {
     }
 
     private String roundAnswer(String input) {
-        int roundValue = PreferenceManager.getDefaultSharedPreferences(this).
-                getInt("NUMBER_OF_DIGITS_IN_ANSWER",
-                        this.getResources().
-                                getInteger(R.integer.calc_default_number_of_digits_in_answer));
+        if (input.equals(getResources().getString(R.string.calculator_incorrect_input)))
+            return input;
+        int roundValue = Integer.parseInt(sPref.getString("NUMBER_OF_DIGITS_IN_CALC", "5"));
         BigDecimal bd = new BigDecimal(input);
         if (bd.scale() > roundValue) {
             bd = bd.setScale(roundValue, RoundingMode.HALF_UP);

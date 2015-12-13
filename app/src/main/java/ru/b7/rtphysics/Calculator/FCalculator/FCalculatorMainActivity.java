@@ -3,6 +3,7 @@ package ru.b7.rtphysics.Calculator.FCalculator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ public class FCalculatorMainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fcalculator_activity_main);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final Intent intent = getIntent();
         int numberOfFormula = intent.getIntExtra("numberOfFormula", -1);
@@ -59,11 +62,15 @@ public class FCalculatorMainActivity extends BaseActivity {
                 }
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }
