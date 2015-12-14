@@ -80,7 +80,12 @@ public class FCalculatorLayoutView {
         variableInput.setInputType(InputType.TYPE_CLASS_TEXT);
         variableInput.setTextColor(ContextCompat.getColor(context, R.color.fcalculatorDefaultTextColor));
 
-//        char[] tempChars = nameOfVariable.getText().toString().toCharArray();
+        char[] tempChars = nameOfVariable.getText().toString().toCharArray();
+        int temp = calc.isConstant(tempChars[0]);
+        if (temp != -1) {
+            variableInput.setText(calc.getConstant(temp));
+            variableInput.setEnabled(false);
+        }
 
         linearLayout.addView(nameOfVariable);
         linearLayout.addView(variableInput);

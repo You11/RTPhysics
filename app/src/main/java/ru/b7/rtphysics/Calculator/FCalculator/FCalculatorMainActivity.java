@@ -27,6 +27,11 @@ public class FCalculatorMainActivity extends BaseActivity {
         final FCalculatorLayoutView layoutCreator = new FCalculatorLayoutView(this);
 
         final String formula = layoutCreator.getFormula(nameOfTheArticle, numberOfFormula);
+        if (formula.equals("")) {
+            Toast.makeText(this, "Извините, на данный момент подсчет формулы не поддерживается",
+                    Toast.LENGTH_SHORT).show();
+            finish();
+        }
         final int numberOfVariables = layoutCreator.getNumberOfVariables();
 
         //главный слой
