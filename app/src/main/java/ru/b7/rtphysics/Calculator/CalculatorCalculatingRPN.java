@@ -61,6 +61,8 @@ public class CalculatorCalculatingRPN {
         int lastCharInInput = currentChar.length;
         Stack stack = new Stack();
 
+        if (input.isEmpty()) return "";
+
         do {
             lastCharInInput--;
             if (lastCharInInput != 0 && isSign(currentChar[lastCharInInput]) != '0')
@@ -347,7 +349,7 @@ public class CalculatorCalculatingRPN {
         return -1;
     }
 
-    private int isConstant(char symbol1, char symbol2) {
+    public int isConstant(char symbol1, char symbol2) {
         String[] array = context.getResources().getStringArray(R.array.symbols_array);
         String symbolString = String.valueOf(symbol1) + String.valueOf(symbol2);
 
@@ -359,7 +361,7 @@ public class CalculatorCalculatingRPN {
         return -1;
     }
 
-    private String getConstant(int position) {
+    public String getConstant(int position) {
         String[] array = context.getResources().getStringArray(R.array.symbols_array_values);
 
         return array[position];

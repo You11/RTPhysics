@@ -145,7 +145,22 @@ public class FCalculatorLayoutView {
     public String getFormula(String input, int number) {
         int resource = context.getResources().getIdentifier(input, "array", context.getPackageName());
 
-        this.input = context.getResources().getStringArray(resource)[number];
+        if (resource == 0) {
+            switch (input) {
+                case "Механика":
+                    this.input = context.getResources().getStringArray(R.array.Механика)[number];
+                    break;
+                case "Термодинамика":
+                    this.input = context.getResources().getStringArray(R.array.Термодинамика)[number];
+                    break;
+                case "Электричество и электромагнетизм":
+                    this.input = context.getResources().getStringArray(R.array.Электричество_и_электромагнетизм)[number];
+                    break;
+                case "Колебания и волны":
+                    this.input = context.getResources().getStringArray(R.array.Колебания_и_волны)[number];
+                    break;
+            }
+        } else this.input = context.getResources().getStringArray(resource)[number];
 
         return this.input;
     }

@@ -32,6 +32,7 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
     protected static List<String> sectionNamesPool = new ArrayList<>();
     protected static String request =null;
     private static View lastView;
+    private static View sectionView;
     boolean currentView = false;
     private TagSetter currentTag;
 
@@ -39,9 +40,15 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
         return lastView;
     }
 
+    public static View getSectionView() {
+        return sectionView;
+    }
+
     public void setLastView(View v) {
         lastView = v;
     }
+
+    public void setSectionView(View v) {sectionView = v; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +95,7 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
                 break;
 
             case "Section": //if it was section => load articles (first properties on lifecycle always have "Section" )
+                setSectionView(v);
                 getFragmentManager().beginTransaction()
                         .replace(R.id.menu_frame_layout,
                                 HandbookArticleFragment.HandbookInitialize(currentTag, false, this, articlesNamesPool))

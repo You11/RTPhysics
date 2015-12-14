@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -54,8 +55,11 @@ public class CalculatorMainActivity extends BaseActivity {
                     break;
                 case R.id.calc_button_enter:
                     CalculatorCalculatingRPN calculator = new CalculatorCalculatingRPN(CalculatorMainActivity.this);
+                    TextView history = (TextView) findViewById(R.id.calculator_history);
+                    history.setText(editText.getText().toString());
                     String result = calculator.calculate(calculator.doTransitionInRPN(editText.getText().toString()));
-                    editText.setText(roundAnswer(result));
+                    if (!result.isEmpty()) result = roundAnswer(result);
+                    editText.setText(result);
                     break;
                 default:
                     editText.insert(calcButton.getText().toString());

@@ -72,6 +72,7 @@
     <string name="calc_button_enter">=</string>
 
     <string name="calculator_incorrect_input">Некорректный ввод</string>
+    <string name="action_search">Поиск</string>
 
     <string-array name="functions_array"> //don't change the order of trigonometry!
         <item>return</item>
@@ -96,35 +97,76 @@
         <item>return</item>
         <item>\u03c0</item> //pi
         <item>e</item>
+        <item>g</item>
     </string-array>
 
     <string-array name="symbols_array_values">
         <item></item>
         <item>3.1415926535</item>
         <item>2.7182818284</item>
+        <item>10</item>
     </string-array>
 
-    <string-array name="Вязкость">
-        <item>x=a+b</item>
-        <item>x=c+a^n</item>
-        <item>x=n*(a+b)</item>
-        <item>x=q*sin(t)^2</item>
+    <string-array name="Механика">
+        <item>s=v*t</item>
+        <item></item>
+        <item></item>
+        <item>a=(v^2)/b</item>
+        <item>v=v0+a*t</item>
+        <item></item>
+        <item></item>
+        <item>p=m*v</item>
+        <item>F=m*a</item>
+        <item>P=m*g</item>
+        <item>F=m*N</item>
+        <item>F=k*(x-x)</item>
+        <item></item>
+        <item>W=m*g*h</item>
+        <item>W=m*g*h</item>
+        <item>W=(m*v^2)/2</item>
+        <item>A=F*(s-s)*cos(a)</item>
+        <item>W=W+W</item>
+        <item></item>
+        <item>I=m*R^2</item>
+        <item>I=1/2*m*R^2</item>
+        <item>I=2/5*m*R^2</item>
+        <item>I=1/12*m*l^2</item>
+        <item>I=i+m*d^2</item>
+        <item>I=i+m*d^2</item>
+        <item>M=F*l</item>
+        <item>M=I*e</item>
+        <item>M=I*e</item>
+        <item>L=I*w</item>
+        <item>M=I*w</item>
+        <item></item>
+        <item>W=(I*w^2)/2</item>
+        <item>A+M*(f2-f1)</item>
     </string-array>
 
-    <string-array name="Адиабатический_процесс">
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
-        <item>x=a+b</item>
+    <string-array name="Термодинамика">
+        <item>v=m/n</item>
+        <item>p=1/3*m*n*v^2</item>
+        <item>v=(3*R*T/m)^(1/2)</item>
+        <item>e=3/2*k*T</item>
+        <item>p=n*k*T</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item>p*v=n*R*T</item>
+        <item></item>
+        <item></item>
+        <item>U=3/2*v*R*T</item>
+        <item>Q=A+U</item>
+        <item>C=Q/T</item>
+    </string-array>
+
+    <string-array name="Электричество_и_электромагнетизм">
+        <item>F=k*Q*Q/r^2</item>
+        <item>E=F/q</item>
+    </string-array>
+
+    <string-array name="Колебания_и_волны">
+        <item>w=(w^2-2*b^2)^(1/2)</item>
+        <item>W=1/2*m*(A^2)*(w^2)</item>
     </string-array>
 </resources>

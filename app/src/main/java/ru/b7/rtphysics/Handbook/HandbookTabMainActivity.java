@@ -58,7 +58,7 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
         if (Character.isDigit(String.valueOf(id).toCharArray()[0])) {
             Intent intent = new Intent(this, FCalculatorMainActivity.class);
             intent.putExtra("numberOfFormula", id);
-            Button button = (Button) HandbookMenuActivity.getLastView();
+            Button button = (Button) HandbookMenuActivity.getSectionView();
             String articleName = button.getText().toString();
             articleName = articleName.replace(' ', '_');
             intent.putExtra("nameOfArticle", articleName);
@@ -160,8 +160,10 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
     }
 
     public String GetResultOfSearch(){
-        try{
+        try {
             return resultOfSearch.get(0);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
         } finally {
             resultOfSearch.clear();
         }

@@ -73,7 +73,7 @@
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ru.b7.rtphysics.Handbook.HandbookTabMainActivity" />
+                android:value=".Handbook.HandbookTabMainActivity" />
         </activity>
     </application>
 
