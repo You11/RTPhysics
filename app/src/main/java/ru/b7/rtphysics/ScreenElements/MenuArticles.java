@@ -21,9 +21,9 @@ import ru.b7.rtphysics.R;
 
 public class MenuArticles extends StyleGlobal {
 
+    List<String> names = new ArrayList<>();
     private TagSetter currentTag;
     private boolean isFavoriteSection = false;
-    List<String> names = new ArrayList<>();
 
     public MenuArticles(BaseActivity activity) {
         super(activity, "Articles");
@@ -81,18 +81,25 @@ public class MenuArticles extends StyleGlobal {
         LinearLayout lay = styleHorizontal(createLinearLayout(0));
 
         Button buttonMain = new Button(parentContext);
-        View buttonFavorite = new ImageButton(parentContext);
+        ImageButton buttonFavorite = new ImageButton(parentContext);
+
+
+        if(isFavorite(item)){
+            buttonFavorite.setImageDrawable(parentContext.getResources().getDrawable(R.mipmap.fav_ic_true));
+        }else{
+            buttonFavorite.setImageDrawable(parentContext.getResources().getDrawable(R.mipmap.fav_ic));
+        }
 
         //style
 
         //initialization
 
         buttonMain = (Button) mainArticlesButton(buttonMain,item);
-        buttonFavorite = setButtonParams(buttonFavorite, item, onClickListener);
+        buttonFavorite = (ImageButton) setButtonParams(buttonFavorite, item, onClickListener);
 
         //params
         buttonMain.setLayoutParams(styleHorizontal(createLinearLayout(1)).getLayoutParams());
-        buttonFavorite = styleFavorites((ImageButton) buttonFavorite);
+        buttonFavorite = (ImageButton) styleFavorites(buttonFavorite);
 
         if(names!=null&&names.contains(buttonMain.getText()))
             buttonMain.setTextColor(ContextCompat.getColor(parentContext, R.color.SearchedTextColor));
@@ -103,6 +110,10 @@ public class MenuArticles extends StyleGlobal {
         return lay;
     }
 
+    private boolean isFavorite(Map<String,String> item){
+        return (item.containsKey("IsFavorites")&&item.get("IsFavorites").equals("1"));
+
+    }
 
 
     private View mainArticlesButton(Button button, Map<String,String> item) {

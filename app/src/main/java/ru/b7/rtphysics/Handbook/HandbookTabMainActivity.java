@@ -111,15 +111,16 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
             case R.id.action_search:
                 if (isSearchRun) {
 
-                    item.setIcon(R.drawable.search);
+                    item.setIcon(R.mipmap.search_ic);
                     adapter = new HandbookViewPagerAdapter(getSupportFragmentManager(),
                             titles, numberOfTabs, this, currentTag,null);
-
+                    isSearchRun = false;
                     pager.setAdapter(adapter);
                     tabs.setViewPager(pager);
 
                     return true;
                 } else {
+                    isSearchRun = true;
                     item.setIcon(R.drawable.closeicon);
                     new SearchDialog(this);
                     return true;

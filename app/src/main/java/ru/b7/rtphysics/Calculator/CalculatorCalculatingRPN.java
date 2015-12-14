@@ -338,7 +338,7 @@ public class CalculatorCalculatingRPN {
         return func;
     }
 
-    private int isConstant(char symbol) {
+    public int isConstant(char symbol) {
         String[] array = context.getResources().getStringArray(R.array.symbols_array);
 
         for (int i = 1; i < array.length; i++)

@@ -40,12 +40,12 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
         return lastView;
     }
 
-    public static View getSectionView() {
-        return sectionView;
-    }
-
     public void setLastView(View v) {
         lastView = v;
+    }
+
+    public static View getSectionView() {
+        return sectionView;
     }
 
     public void setSectionView(View v) {sectionView = v; }
@@ -147,13 +147,12 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
         switch (id) {
             case R.id.action_search:
                 if (isSearchRun) {
-                    item.setIcon(R.drawable.search);
+                    item.setIcon(R.mipmap.search_ic);
 
                     request = null;
                     isSearchRun = false;
                     articlesNamesPool =new ArrayList<>();
                     sectionNamesPool = new ArrayList<>();
-
                     ResetPage();
 
                     return true;
@@ -162,6 +161,7 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
                     item.setIcon(R.drawable.closeicon);
                     isSearchRun = true;
                     new SearchDialog(this);
+
                     return true;
                 }
         }
