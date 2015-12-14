@@ -34,8 +34,12 @@
     <string name="corporation_name">7bytes</string>
     <string name="icon_description">Icon of application</string>
 
-    <string name="calculator_preferences_title_formatting">Форматирование</string>
+    <string name="calculator_preferences_title">Форматирование</string>
     <string name="calculator_preferences_number_of_digits">Количество символов в выводе</string>
+
+    <string name="handbook_preferences_title">Форматирование текста</string>
+    <string name="handbook_preferences_text_size">Размер шрифта</string>
+    <string name="handbook_preferences_text_color">Цвет текста</string>
 
     //calc
     <string name="calc_button_digit1">1</string>

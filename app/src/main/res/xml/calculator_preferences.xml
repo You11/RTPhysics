@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:title="@string/calculator_preferences_title_formatting">
+    <PreferenceCategory android:title="@string/calculator_preferences_title">
         <EditTextPreference
             android:key="NUMBER_OF_DIGITS_IN_CALC"
             android:title="@string/calculator_preferences_number_of_digits" />

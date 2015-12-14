@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/handbook_preferences_title">
+        <EditTextPreference
+            android:key="TEXT_SIZE_IN_ARTICLE"
+            android:title="@string/handbook_preferences_text_size" />
+
+        <ListPreference
+            android:entries="@array/handbook_article_color_list"
+            android:entryValues="@array/handbook_article_color_values"
+            android:key="TEXT_COLOR_IN_ARTICLE"
+            android:title="@string/handbook_preferences_text_color" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -18,4 +18,7 @@
     <color name="fcalculatorDefaultTextColor">#fafafa</color>
     <color name="fcalculatorVariablesTextColor">#ffc107</color>
     <color name="fcalculatorAnswerTextColor">#ffc107</color>
+    <color name="handbookWhiteTextColor">#fafafa</color>
+    <color name="handbookGrayTextColor">#ababab</color>
+    <color name="handbookGoldenTextColor">#ffc107</color>
 </resources>

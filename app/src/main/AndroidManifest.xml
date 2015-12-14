@@ -29,6 +29,16 @@
                 android:value=".Handbook.HandbookMenuActivity" />
         </activity>
         <activity
+            android:name=".Handbook.HandbookPreferences"
+            android:label="Настройки"
+            android:parentActivityName=".Handbook.HandbookTabMainActivity"
+            android:theme="@style/RTPhysicsTheme.NoActionBar">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Handbook.HandbookTabMainActivity" />
+        </activity>
+        <activity
             android:name=".Calculator.CalculatorMainActivity"
             android:label="@string/calculator_name"
             android:parentActivityName=".Handbook.HandbookMenuActivity"

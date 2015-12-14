@@ -16,9 +16,9 @@
     <group
         android:id="@+id/drawer_menu_group2"
         android:checkableBehavior="all">
-        <item android:id="@+id/nav_search"
-            android:icon="@android:drawable/ic_menu_manage"
-            android:title="@string/navigation_drawer_action_search" />
+        <!--<item android:id="@+id/nav_search"-->
+        <!--android:icon="@android:drawable/ic_menu_manage"-->
+        <!--android:title="@string/navigation_drawer_action_search" />-->
         <item android:id="@+id/nav_exit"
             android:icon="@android:drawable/ic_menu_send"
             android:title="@string/navigation_drawer_action_exit" />

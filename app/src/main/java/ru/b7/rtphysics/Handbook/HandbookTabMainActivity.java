@@ -107,8 +107,6 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
                 View v = HandbookMenuActivity.getLastView();
                 FavoritesClickListener.onClickFavorite(v);
                 return true;
-            case R.id.action_settings:
-                return true;
 
             case R.id.action_search:
                 if (isSearchRun) {
@@ -125,11 +123,20 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
                     item.setIcon(R.drawable.closeicon);
                     new SearchDialog(this);
                     return true;
-
                 }
+
+            case R.id.action_settings:
+                startActivity(new Intent(this, HandbookPreferences.class));
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override

@@ -36,7 +36,7 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
     private final int[] NAV_DRAWER_LIST = new int[]{
         R.id.nav_handbook,
         R.id.nav_calculator,
-        R.id.nav_search
+//        R.id.nav_search
     };
     public boolean isSearchRun = false;
     //handbook is our starting activity
@@ -180,11 +180,11 @@ abstract public class BaseActivity extends AppCompatActivity implements Navigati
                 break;
             }
 
-            case R.id.nav_search: {
-                intent = new Intent(this, SearchMainActivity.class);
-                startActivity(intent);
-                break;
-            }
+//            case R.id.nav_search: {
+//                intent = new Intent(this, SearchMainActivity.class);
+//                startActivity(intent);
+//                break;
+//            }
 
             case R.id.nav_exit: {
                 finish();
