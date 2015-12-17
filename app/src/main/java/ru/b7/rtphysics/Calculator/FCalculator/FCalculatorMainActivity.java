@@ -3,6 +3,7 @@ package ru.b7.rtphysics.Calculator.FCalculator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -17,6 +18,8 @@ public class FCalculatorMainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fcalculator_activity_main);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         final Intent intent = getIntent();
         int numberOfFormula = intent.getIntExtra("numberOfFormula", -1);
         String nameOfTheArticle = intent.getStringExtra("nameOfArticle");
@@ -24,6 +27,11 @@ public class FCalculatorMainActivity extends BaseActivity {
         final FCalculatorLayoutView layoutCreator = new FCalculatorLayoutView(this);
 
         final String formula = layoutCreator.getFormula(nameOfTheArticle, numberOfFormula);
+        if (formula.equals("")) {
+            Toast.makeText(this, "Извините, на данный момент подсчет формулы не поддерживается",
+                    Toast.LENGTH_SHORT).show();
+            finish();
+        }
         final int numberOfVariables = layoutCreator.getNumberOfVariables();
 
         //главный слой
@@ -59,11 +67,15 @@ public class FCalculatorMainActivity extends BaseActivity {
                 }
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }

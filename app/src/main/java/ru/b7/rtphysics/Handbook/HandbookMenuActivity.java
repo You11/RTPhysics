@@ -28,12 +28,27 @@ import ru.b7.rtphysics.Search.SearchDialog;
 public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNames {
 
     public static DatabaseCreator DataBase;
-    boolean currentView = false;
-    private static View lastView;
-    private TagSetter currentTag;
     protected static List<String> articlesNamesPool= new ArrayList<>();
     protected static List<String> sectionNamesPool = new ArrayList<>();
     protected static String request =null;
+    private static View lastView;
+    private static View sectionView;
+    boolean currentView = false;
+    private TagSetter currentTag;
+
+    public static View getLastView() {
+        return lastView;
+    }
+
+    public void setLastView(View v) {
+        lastView = v;
+    }
+
+    public static View getSectionView() {
+        return sectionView;
+    }
+
+    public void setSectionView(View v) {sectionView = v; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +95,7 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
                 break;
 
             case "Section": //if it was section => load articles (first properties on lifecycle always have "Section" )
+                setSectionView(v);
                 getFragmentManager().beginTransaction()
                         .replace(R.id.menu_frame_layout,
                                 HandbookArticleFragment.HandbookInitialize(currentTag, false, this, articlesNamesPool))
@@ -116,14 +132,6 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
         }
     }
 
-    public static View getLastView() {
-        return lastView;
-    }
-
-    public void setLastView(View v) {
-        lastView = v;
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -137,18 +145,14 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
 
         //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.action_settings:
-                return true;
-
             case R.id.action_search:
                 if (isSearchRun) {
-                    item.setIcon(R.drawable.search);
+                    item.setIcon(R.mipmap.search_ic);
 
                     request = null;
                     isSearchRun = false;
                     articlesNamesPool =new ArrayList<>();
                     sectionNamesPool = new ArrayList<>();
-
                     ResetPage();
 
                     return true;
@@ -157,6 +161,7 @@ public class HandbookMenuActivity extends BaseActivity implements ISearchPagesNa
                     item.setIcon(R.drawable.closeicon);
                     isSearchRun = true;
                     new SearchDialog(this);
+
                     return true;
                 }
         }

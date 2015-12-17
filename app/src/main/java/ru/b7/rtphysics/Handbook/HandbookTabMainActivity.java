@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,20 +28,29 @@ import ru.b7.rtphysics.google.SlidingTabLayout;
 /**
  * Tab Activity.
  */
-public class HandbookTabMainActivity extends BaseActivity implements View.OnClickListener ,ISearchPagesNames {
+public class HandbookTabMainActivity extends BaseActivity implements View.OnClickListener, ISearchPagesNames {
 
+    static TagSetter currentTag;
+    static String currentContent;
+    static List<String> resultOfSearch = new ArrayList<>();
     public SlidingTabLayout tabs;
+    int numberOfTabs = 2;
     private CharSequence titles[] = {"Статья", "Формулы"};
     private HandbookViewPagerAdapter adapter;
     private ViewPager pager;
 
-    int numberOfTabs = 2;
-    static TagSetter currentTag;
-    static String currentContent;
+    public static void HandbookTabCreate(TagSetter tag, String request) {
+        currentTag = tag;
+        currentContent = "Paragraph";
+        resultOfSearch.add(new SearchLogic(request)
+                .GetLinkedText(GetSearchSpaceStart().get("Paragraph")));
+    }
 
+    public static Map<String, String> GetSearchSpaceStart() {
+        return Finder.GetByID("Articles", currentTag.id);
 
-    static List<String> resultOfSearch = new ArrayList<>();
-
+    }
+    
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -48,27 +58,22 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
         if (Character.isDigit(String.valueOf(id).toCharArray()[0])) {
             Intent intent = new Intent(this, FCalculatorMainActivity.class);
             intent.putExtra("numberOfFormula", id);
-            Button button = (Button) HandbookMenuActivity.getLastView();
-            intent.putExtra("nameOfArticle", button.getText().toString());
+            Button button = (Button) HandbookMenuActivity.getSectionView();
+            String articleName = button.getText().toString();
+            articleName = articleName.replace(' ', '_');
+            intent.putExtra("nameOfArticle", articleName);
             startActivity(intent);
         }
     }
 
-    public static void HandbookTabCreate(TagSetter tag,String request)
-    {
-        currentTag = tag;
-        currentContent = "Paragraph";
-        resultOfSearch.add(new SearchLogic(request)
-                .GetLinkedText(GetSearchSpaceStart().get("Paragraph")));
-    }
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.tabs_handbook_main);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        adapter= new HandbookViewPagerAdapter(getSupportFragmentManager(),
+        adapter = new HandbookViewPagerAdapter(getSupportFragmentManager(),
                 titles, numberOfTabs, this, currentTag, GetResultOfSearch());
 
         pager = (ViewPager) findViewById(R.id.view_pager);
@@ -84,6 +89,8 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
         });
 
         tabs.setViewPager(pager);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     @Override
@@ -99,31 +106,38 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
             case R.id.action_favorite:
                 View v = HandbookMenuActivity.getLastView();
                 FavoritesClickListener.onClickFavorite(v);
-
-            case R.id.action_settings:
                 return true;
 
             case R.id.action_search:
                 if (isSearchRun) {
 
-                    item.setIcon(R.drawable.search);
+                    item.setIcon(R.mipmap.search_ic);
                     adapter = new HandbookViewPagerAdapter(getSupportFragmentManager(),
                             titles, numberOfTabs, this, currentTag,null);
-
+                    isSearchRun = false;
                     pager.setAdapter(adapter);
                     tabs.setViewPager(pager);
 
                     return true;
                 } else {
+                    isSearchRun = true;
                     item.setIcon(R.drawable.closeicon);
                     new SearchDialog(this);
                     return true;
-
                 }
+
+            case R.id.action_settings:
+                startActivity(new Intent(this, HandbookPreferences.class));
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -147,9 +161,11 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
     }
 
     public String GetResultOfSearch(){
-        try{
+        try {
             return resultOfSearch.get(0);
-        }finally {
+        } catch (IndexOutOfBoundsException e) {
+            return null;
+        } finally {
             resultOfSearch.clear();
         }
     }
@@ -163,9 +179,5 @@ public class HandbookTabMainActivity extends BaseActivity implements View.OnClic
         return singleParagraph;
     }
 
-    public static Map<String, String> GetSearchSpaceStart() {
-        return Finder.GetByID("Articles", currentTag.id);
-
-    }
 
 }

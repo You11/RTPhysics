@@ -7,6 +7,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/handbookGoldenTextColor</item>
     </style>
 
     <style name="RTPhysicsTheme.NoActionBar">
@@ -51,7 +56,7 @@
     </style>
 
     <style name="CalculatorPadButtonStyle">
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
 

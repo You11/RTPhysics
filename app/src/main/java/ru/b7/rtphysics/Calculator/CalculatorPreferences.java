@@ -11,7 +11,7 @@ import ru.b7.rtphysics.BaseActivity;
 public class CalculatorPreferences extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {

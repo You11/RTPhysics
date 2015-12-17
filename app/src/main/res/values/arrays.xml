@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="handbook_article_color_list">
+        <item>Белый</item>
+        <item>Серый</item>
+        <item>Золотой</item>
+    </string-array>
+
+    <string-array name="handbook_article_color_values">
+        <item>R.color.handbookWhiteTextColor</item>
+        <item>R.color.handbookGrayTextColor</item>
+        <item>R.color.handbookGoldenTextColor</item>
+    </string-array>
+</resources>

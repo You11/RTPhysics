@@ -1,7 +1,10 @@
 package ru.b7.rtphysics.ScreenElements;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,6 +17,7 @@ import java.util.List;
 
 import ru.b7.rtphysics.BaseActivity;
 import ru.b7.rtphysics.Database.Access_API.Finder;
+import ru.b7.rtphysics.R;
 
 /**
  * Created by Nikita on 12.11.2015.
@@ -23,7 +27,7 @@ public class MenuParagraph extends StyleGlobal {
 
     TagSetter tag;
     String content;
-
+    SharedPreferences sPref = PreferenceManager.getDefaultSharedPreferences(parentContext);
 
 
     public MenuParagraph(BaseActivity activity, TagSetter tag) {
@@ -55,7 +59,22 @@ public class MenuParagraph extends StyleGlobal {
 
         paragraphPage.setPadding(0, 20, 0, 0);
         paragraphPage.setText(Html.fromHtml(content, new MyImageGetter(parentContext), null));
+        paragraphPage.setTextSize(Integer.parseInt(sPref.getString("TEXT_SIZE_IN_ARTICLE", "10")));
+        String color = sPref.getString("TEXT_COLOR_IN_ARTICLE", "R.color.handbookGrayTextColor");
 
+        switch (color) {
+            case "R.color.handbookGoldenTextColor":
+                paragraphPage.setTextColor(ContextCompat.getColor(parentContext, R.color.handbookGoldenTextColor));
+                break;
+            case "R.color.handbookGrayTextColor":
+                paragraphPage.setTextColor(ContextCompat.getColor(parentContext, R.color.handbookGrayTextColor));
+                break;
+            case "R.color.handbookWhiteTextColor":
+                paragraphPage.setTextColor(ContextCompat.getColor(parentContext, R.color.handbookWhiteTextColor));
+                break;
+            default:
+                paragraphPage.setTextColor(ContextCompat.getColor(parentContext, R.color.handbookGrayTextColor));
+        }
         List<View> elements = new ArrayList<>();
         elements.add(paragraphPage);
 
@@ -118,7 +137,7 @@ public class MenuParagraph extends StyleGlobal {
         public void setText(CharSequence text, BufferType type) {
             try{
                 super.setText(text, type);
-            }catch (ArrayIndexOutOfBoundsException e){
+            } catch (ArrayIndexOutOfBoundsException e) {
                 setText(text.toString());
             }
         }

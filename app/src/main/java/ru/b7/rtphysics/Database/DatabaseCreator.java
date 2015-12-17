@@ -1,27 +1,15 @@
 package ru.b7.rtphysics.Database;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.SQLException;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-import ru.b7.rtphysics.R;
 
 
 /**
@@ -29,12 +17,11 @@ import ru.b7.rtphysics.R;
  */
 public class DatabaseCreator extends SQLiteOpenHelper {
 
-    Context myContext;
-
-    private static String DB_PATH = "/data/data/ru.b7.rtphysics/databases/";
     private static final String DB_NAME = "finalbasa";
     private static final int DATABASE_VERSION = 1;
     public static SQLiteDatabase myDB;
+    private static String DB_PATH = "/data/data/ru.b7.rtphysics/databases/";
+    Context myContext;
 
     /**
      * Конструктор
@@ -46,8 +33,6 @@ public class DatabaseCreator extends SQLiteOpenHelper {
 
         this.myContext = context;
         //Почистить от этого говна!!!!!!!!
-        myContext.deleteDatabase(DB_NAME);
-        myContext.deleteDatabase("rtfdata");
 
         createDataBase();
     }

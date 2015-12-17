@@ -74,10 +74,18 @@ public class FCalculatorLayoutView {
                 R.color.fcalculatorVariablesTextColor));
 
         EditText variableInput = new EditText(context);
+        variableInput.setSelectAllOnFocus(true);
         variableInput.setTextSize(20);
-        variableInput.setInputType(InputType.TYPE_CLASS_NUMBER);
         variableInput.setId(id++);
+        variableInput.setInputType(InputType.TYPE_CLASS_TEXT);
         variableInput.setTextColor(ContextCompat.getColor(context, R.color.fcalculatorDefaultTextColor));
+
+        char[] tempChars = nameOfVariable.getText().toString().toCharArray();
+        int temp = calc.isConstant(tempChars[0]);
+        if (temp != -1) {
+            variableInput.setText(calc.getConstant(temp));
+            variableInput.setEnabled(false);
+        }
 
         linearLayout.addView(nameOfVariable);
         linearLayout.addView(variableInput);
@@ -89,7 +97,13 @@ public class FCalculatorLayoutView {
         LinearLayout linearLayout = (LinearLayout) createLinearLayout();
 
         TextView formula = new TextView(context);
-        formula.setText(input);
+        char[] chars = input.toCharArray();
+        String answerInput = "";
+        for (char aChar : chars) {
+            answerInput += aChar;
+            answerInput += " ";
+        }
+        formula.setText(answerInput);
         formula.setTextSize(30);
 
         linearLayout.addView(formula);
@@ -138,7 +152,22 @@ public class FCalculatorLayoutView {
     public String getFormula(String input, int number) {
         int resource = context.getResources().getIdentifier(input, "array", context.getPackageName());
 
-        this.input = context.getResources().getStringArray(resource)[number];
+        if (resource == 0) {
+            switch (input) {
+                case "Механика":
+                    this.input = context.getResources().getStringArray(R.array.Механика)[number];
+                    break;
+                case "Термодинамика":
+                    this.input = context.getResources().getStringArray(R.array.Термодинамика)[number];
+                    break;
+                case "Электричество и электромагнетизм":
+                    this.input = context.getResources().getStringArray(R.array.Электричество_и_электромагнетизм)[number];
+                    break;
+                case "Колебания и волны":
+                    this.input = context.getResources().getStringArray(R.array.Колебания_и_волны)[number];
+                    break;
+            }
+        } else this.input = context.getResources().getStringArray(resource)[number];
 
         return this.input;
     }

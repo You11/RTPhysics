@@ -4,18 +4,19 @@
 
     <item
         android:id="@+id/action_favorite"
+        android:icon="@mipmap/fav_ic"
         android:title="@string/action_favorite"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
-        android:title=""
         android:id="@+id/action_search"
-        android:icon="@drawable/search"
-        app:showAsAction="ifRoom|collapseActionView"
-        />
+        android:icon="@mipmap/search_ic"
+        android:title="@string/action_search"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_settings"
+        android:icon="@mipmap/setting_ic"
         android:title="@string/action_settings"
         app:showAsAction="always" />
 </menu>

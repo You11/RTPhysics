@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/rtphysics_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/RTPhysicsTheme">
@@ -21,12 +21,22 @@
         </activity>
         <activity
             android:name=".Handbook.HandbookTabMainActivity"
-            android:label="Что тут написать?"
+            android:label="Статья"
             android:parentActivityName=".Handbook.HandbookMenuActivity"
             android:theme="@style/RTPhysicsTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Handbook.HandbookMenuActivity" />
+        </activity>
+        <activity
+            android:name=".Handbook.HandbookPreferences"
+            android:label="Настройки"
+            android:parentActivityName=".Handbook.HandbookTabMainActivity"
+            android:theme="@style/RTPhysicsTheme.NoActionBar">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Handbook.HandbookTabMainActivity" />
         </activity>
         <activity
             android:name=".Calculator.CalculatorMainActivity"
@@ -47,15 +57,6 @@
                 android:value=".Calculator.CalculatorMainActivity" />
         </activity>
         <activity
-            android:name=".ConventerMainActivity"
-            android:label="@string/conventer_name"
-            android:parentActivityName=".Handbook.HandbookMenuActivity"
-            android:theme="@style/RTPhysicsTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Handbook.HandbookMenuActivity" />
-        </activity>
-        <activity
             android:name=".SearchMainActivity"
             android:label="@string/search_name"
             android:parentActivityName=".Handbook.HandbookMenuActivity"
@@ -68,10 +69,11 @@
             android:name=".Calculator.FCalculator.FCalculatorMainActivity"
             android:label="@string/title_activity_fcalculator_main"
             android:parentActivityName=".Handbook.HandbookTabMainActivity"
-            android:theme="@style/RTPhysicsTheme">
+            android:theme="@style/RTPhysicsTheme"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ru.b7.rtphysics.Handbook.HandbookTabMainActivity" />
+                android:value=".Handbook.HandbookTabMainActivity" />
         </activity>
     </application>
 
